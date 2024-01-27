@@ -1,6 +1,6 @@
 package LayMotSoUIdepTaiDay;
 
-import OutSource.RippleEffect;
+import Component.RippleEffect;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.MouseAdapter;

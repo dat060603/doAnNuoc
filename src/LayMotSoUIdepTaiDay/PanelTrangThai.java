@@ -5,6 +5,7 @@ import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import javax.swing.Icon;
 import javax.swing.JLabel;
 
 public class PanelTrangThai extends javax.swing.JPanel {
@@ -41,12 +42,9 @@ public class PanelTrangThai extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Icon = new javax.swing.JLabel();
         Label = new javax.swing.JLabel();
         SoLuong = new javax.swing.JLabel();
-
-        Icon.setForeground(new java.awt.Color(255, 255, 255));
-        Icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/profile.png"))); // NOI18N
+        Icon = new javax.swing.JLabel();
 
         Label.setFont(new java.awt.Font("Segoe UI Variable", 1, 18)); // NOI18N
         Label.setForeground(new java.awt.Color(255, 255, 255));
@@ -73,13 +71,13 @@ public class PanelTrangThai extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(32, 32, 32)
                 .addComponent(Icon)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Label)
                     .addComponent(SoLuong))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -106,8 +104,8 @@ public class PanelTrangThai extends javax.swing.JPanel {
         return Icon;
     }
 
-    public void setIcon(JLabel Icon) {
-        this.Icon = Icon;
+    public void setIcon(Icon icon) {
+        this.Icon.setIcon(icon);
     }
 
     public JLabel getLabel() {
