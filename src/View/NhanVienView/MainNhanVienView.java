@@ -12,11 +12,16 @@ public final class MainNhanVienView extends javax.swing.JFrame {
     public MainNhanVienView(){
         initComponents();
         setBackground(new Color(0, 0, 0, 0));
+        
+        TrangThaiChuHo.setLabel("Số chủ hộ: ");
+        TrangThaiNhanVien.setLabel("Số nhân viên: ");
+        TrangThaiTien.setLabel("Tổng doanh thu: ");
         ImageIcon imageNguoi = new ImageIcon("src/Icon/profile.png");
         ImageIcon imageTien = new ImageIcon("src/Icon/profit.png");
         TrangThaiChuHo.setIcon(imageNguoi);
         TrangThaiNhanVien.setIcon(imageNguoi);
         TrangThaiTien.setIcon(imageTien);
+        
     }
 
     public JPanel getMainPanel() {

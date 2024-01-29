@@ -112,16 +112,17 @@ public class PanelTrangThai extends javax.swing.JPanel {
         return Label;
     }
 
-    public void setLabel(JLabel Label) {
-        this.Label = Label;
+    public void setLabel(String text) {
+        this.Label.setText(text);
     }
 
     public JLabel getSoLuong() {
         return SoLuong;
     }
 
-    public void setSoLuong(JLabel SoLuong) {
-        this.SoLuong = SoLuong;
+    public void setSoLuong(Double SoLuong) {
+        String soluong = String.valueOf(SoLuong);
+        this.SoLuong.setText(soluong);
     }
 
 
