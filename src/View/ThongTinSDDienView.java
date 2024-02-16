@@ -1,4 +1,6 @@
-package View.NhanVienView;
+package View;
+
+import View.MainNhanVienView;
 
 public class ThongTinSDDienView extends javax.swing.JPanel {
 
@@ -18,7 +20,6 @@ public class ThongTinSDDienView extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        bangDanhSach2.setBackground(new java.awt.Color(255, 255, 255));
         bangDanhSach2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},

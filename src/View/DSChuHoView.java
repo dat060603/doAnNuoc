@@ -1,5 +1,5 @@
-package View.NhanVienView;
-import Controller.NhanVienController.DSChuHoController;
+package View;
+
 import javax.swing.table.DefaultTableModel;
 public class DSChuHoView extends javax.swing.JPanel {
 
@@ -40,7 +40,6 @@ public class DSChuHoView extends javax.swing.JPanel {
             }
         });
 
-        BangDSChuHo.setBackground(new java.awt.Color(255, 255, 255));
         BangDSChuHo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -95,7 +94,7 @@ public class DSChuHoView extends javax.swing.JPanel {
 
     private void TimKiemBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TimKiemBTActionPerformed
         String key = TimKiemTF.getText();
-        new DSChuHoController().TimKiemChuHo(key, BangDSChuHo);
+        new Controller.DSChuHoController().TimKiemChuHo(key, BangDSChuHo);
     }//GEN-LAST:event_TimKiemBTActionPerformed
 
 

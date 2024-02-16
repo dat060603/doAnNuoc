@@ -1,5 +1,7 @@
-package View.NhanVienView;
+package View;
 
+//import View.NhanVienView.ThongTinSDDienView;
+import View.DSChuHoView;
 import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;
