@@ -1,6 +1,6 @@
 package MainRunCode;
 
-import View.NhanVienView.MainNhanVienView;
+import View.MainNhanVienView;
 
 public class Main {
     private MainNhanVienView MF = new MainNhanVienView();

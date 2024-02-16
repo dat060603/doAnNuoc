@@ -1,4 +1,5 @@
-package Controller.NhanVienController;
+
+package Controller;
 
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
