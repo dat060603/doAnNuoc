@@ -48,6 +48,7 @@ public final class MainNhanVienView extends javax.swing.JFrame {
         TrangThaiTien = new LayMotSoUIdepTaiDay.PanelTrangThai();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("NHÂN VIÊN ");
         setUndecorated(true);
 
         MainBorder.setBackground(new java.awt.Color(232, 232, 232));
