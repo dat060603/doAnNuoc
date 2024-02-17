@@ -36,4 +36,8 @@ public class DSChuHoController {
             JOptionPane.showMessageDialog(null, "Có lỗi xảy ra khi tìm kiếm người dùng.");
         }
     }
+    
+    public void ThemChuHo (String keyword, JTable table){
+        
+    }
 }
