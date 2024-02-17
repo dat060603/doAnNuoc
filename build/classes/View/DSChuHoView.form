@@ -25,15 +25,15 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="TimKiemTF" min="-2" pref="158" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="TimKiemBT" min="-2" pref="134" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-              <Component id="ThemBT" min="-2" pref="128" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="XoaBT" min="-2" pref="128" max="-2" attributes="0"/>
+              <Component id="TimKiemBT" min="-2" pref="120" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+              <Component id="ThemBT" min="-2" pref="120" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="SuaBT" min="-2" pref="128" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <Component id="XoaBT" min="-2" pref="120" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="SuaBT" min="-2" pref="120" max="-2" attributes="0"/>
+              <EmptySpace pref="63" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -43,13 +43,13 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="TimKiemTF" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                  <Component id="ThemBT" alignment="3" pref="0" max="32767" attributes="0"/>
-                  <Component id="XoaBT" alignment="3" pref="0" max="32767" attributes="0"/>
-                  <Component id="SuaBT" alignment="3" pref="0" max="32767" attributes="0"/>
+                  <Component id="ThemBT" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="XoaBT" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                   <Component id="TimKiemBT" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="SuaBT" min="-2" pref="35" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
-              <Component id="ScrollPane" min="-2" pref="340" max="-2" attributes="0"/>
+              <Component id="ScrollPane" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
