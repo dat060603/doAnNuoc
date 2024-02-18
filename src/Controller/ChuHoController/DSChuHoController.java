@@ -1,11 +1,33 @@
 
-package Controller;
+package Controller.ChuHoController;
 
+import Model.ChuHo;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class DSChuHoController {
+    private List<ChuHo> dsChuHo;
+
+    public DSChuHoController() {
+        try {
+            this.dsChuHo = new ChuHoDAO().getAll();
+        } catch (Exception ex) {
+            Logger.getLogger(DSChuHoController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public List<ChuHo> getDsChuHo() {
+        return dsChuHo;
+    }
+
+    public void setDsChuHo(List<ChuHo> dsChuHo) {
+        this.dsChuHo = dsChuHo;
+    }
+    
     public void TimKiemChuHo (String keyword, JTable table) {
         //Cast table về dạng DefaultTableModel, sau đó dùng một số hàm built-in có sẵn từ DefaultTableModel
         DefaultTableModel model = (DefaultTableModel) table.getModel();
@@ -39,5 +61,9 @@ public class DSChuHoController {
     
     public void ThemChuHo (String keyword, JTable table){
         
+    }
+    
+    public void ShowDSChuHo (JTable table){
+
     }
 }

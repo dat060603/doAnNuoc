@@ -1,23 +1,30 @@
 package View;
 
+import Controller.ChuHoController.DSChuHoController;
+import Model.ChuHo;
 import View.form.ThemChuHoDialog;
 import View.form.XoaChuHoDialog;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 public class DSChuHoView extends javax.swing.JPanel {
     public DSChuHoView() {
         initComponents();
         this.setSize(new MainNhanVienView().getMainPanel().getSize());
-        DefaultTableModel model = (DefaultTableModel) BangDSChuHo.getModel();
-        Object[] rowData1 = {"Messi", "1/1/2000", "1/1 đường Nguyễn Văn A", "1234567890"};
-        Object[] rowData2 = {"Ronaldo", "1/1/2002", "1/1 Trần Văn B", "1234567800"};
-        model.insertRow(0, rowData1);
-        model.insertRow(1, rowData2);
-        
-        model.fireTableDataChanged();
-        
         this.setVisible(true);
+        ShowThongTin();
     }
 
+    public void ShowThongTin(){
+        List<ChuHo> dsChuHO = new DSChuHoController().getDsChuHo();
+        DefaultTableModel model = (DefaultTableModel) BangDSChuHo.getModel();
+        int i = 0;
+        for(ChuHo chuHo : dsChuHO){
+            Object[] rowData = {chuHo.getCCCD(),chuHo.getUsername(), chuHo.getAddress(), chuHo.getPhone(), chuHo.getDOB()};
+            model.insertRow(i++,rowData);
+        }
+        model.fireTableDataChanged();
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -45,20 +52,20 @@ public class DSChuHoView extends javax.swing.JPanel {
 
         BangDSChuHo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Họ và tên", "Ngày sinh", "Địa chỉ", "SĐT"
+                "CCCD", "Họ và tên", "Ngày sinh", "Địa chỉ", "SĐT"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -130,7 +137,7 @@ public class DSChuHoView extends javax.swing.JPanel {
 
     private void TimKiemBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TimKiemBTActionPerformed
         String key = TimKiemTF.getText();
-        new Controller.DSChuHoController().TimKiemChuHo(key, BangDSChuHo);
+        new Controller.ChuHoController.DSChuHoController().TimKiemChuHo(key, BangDSChuHo);
     }//GEN-LAST:event_TimKiemBTActionPerformed
 
     private void XoaBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_XoaBTActionPerformed
