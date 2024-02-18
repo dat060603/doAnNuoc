@@ -13,7 +13,7 @@ public class ChuHoDAO {
                      "FROM [dbo].[PERSON_INFO] AS P\n" +
                      "JOIN [dbo].[ACCOUNT] AS A\n" +
                      "ON P.CCCD = A.CCCD\n" +
-                     "WHERE A.Privilege = 0";
+                     "WHERE A.Privilege = 0 AND A.Da_Xoa = 0";
         try(
             Connection con = new DBS().getConnection();
             Statement stmt = con.createStatement();
