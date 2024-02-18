@@ -1,14 +1,12 @@
 package View;
 
-import View.form.ThemChuHoForm;
-import View.form.XoaChuHoForm;
+import View.form.ThemChuHoDialog;
+import View.form.XoaChuHoDialog;
 import javax.swing.table.DefaultTableModel;
 public class DSChuHoView extends javax.swing.JPanel {
-
     public DSChuHoView() {
         initComponents();
         this.setSize(new MainNhanVienView().getMainPanel().getSize());
-        
         DefaultTableModel model = (DefaultTableModel) BangDSChuHo.getModel();
         Object[] rowData1 = {"Messi", "1/1/2000", "1/1 đường Nguyễn Văn A", "1234567890"};
         Object[] rowData2 = {"Ronaldo", "1/1/2002", "1/1 Trần Văn B", "1234567800"};
@@ -105,15 +103,15 @@ public class DSChuHoView extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(TimKiemTF, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TimKiemBT, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(ThemBT, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(XoaBT, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TimKiemBT, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(ThemBT, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(SuaBT, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(XoaBT, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(SuaBT, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(63, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,12 +119,12 @@ public class DSChuHoView extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TimKiemTF, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ThemBT, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(XoaBT, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(SuaBT, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(TimKiemBT, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ThemBT, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(XoaBT, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TimKiemBT, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SuaBT, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(96, 96, 96)
-                .addComponent(ScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(ScrollPane))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -136,7 +134,7 @@ public class DSChuHoView extends javax.swing.JPanel {
     }//GEN-LAST:event_TimKiemBTActionPerformed
 
     private void XoaBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_XoaBTActionPerformed
-        new XoaChuHoForm().setVisible(true);
+        showXoaChuHoDialog();
     }//GEN-LAST:event_XoaBTActionPerformed
 
     private void SuaBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SuaBTActionPerformed
@@ -144,10 +142,18 @@ public class DSChuHoView extends javax.swing.JPanel {
     }//GEN-LAST:event_SuaBTActionPerformed
 
     private void ThemBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ThemBTActionPerformed
-        new ThemChuHoForm().setVisible(true);
+        showThemChuHoDialog();
     }//GEN-LAST:event_ThemBTActionPerformed
+    private void showThemChuHoDialog() {
+        ThemChuHoDialog themChuHoDialog = new ThemChuHoDialog(new MainNhanVienView(), true);
+        themChuHoDialog.setVisible(true);
+    }
 
-
+    private void showXoaChuHoDialog() {
+        XoaChuHoDialog xoaChuHoDialog = new XoaChuHoDialog(new MainNhanVienView(), true);
+        xoaChuHoDialog.setVisible(true);
+    }    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private LayMotSoUIdepTaiDay.BangDanhSach BangDSChuHo;
     private javax.swing.JScrollPane ScrollPane;
