@@ -151,6 +151,7 @@ public class DSChuHoView extends javax.swing.JPanel {
     private void ThemBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ThemBTActionPerformed
         showThemChuHoDialog();
     }//GEN-LAST:event_ThemBTActionPerformed
+    
     private void showThemChuHoDialog() {
         ThemChuHoDialog themChuHoDialog = new ThemChuHoDialog(new MainNhanVienView(), true);
         themChuHoDialog.setVisible(true);
