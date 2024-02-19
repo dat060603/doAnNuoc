@@ -9,6 +9,7 @@ import View.DSChuHoView;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Image;
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -41,7 +42,13 @@ public final class MainNhanVienView extends javax.swing.JFrame{
         } catch (Exception ex) {
             Logger.getLogger(MainNhanVienView.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+        BigDecimal totalPrice=new InvoiceController().getTotalprice();
+        if(totalPrice!=null){
+            TrangThaiTien.setSoLuong(decimalFormat2.format(totalPrice) + " VNĐ");
+        }else{
+            TrangThaiTien.setLabel("0 VNĐ");
+        }
+ 
         ImageIcon imageNguoi = new ImageIcon("src/Icon/profile.png");
         ImageIcon imageTien = new ImageIcon("src/Icon/profit.png");
         TrangThaiChuHo.setIcon(imageNguoi);
@@ -68,6 +75,7 @@ public final class MainNhanVienView extends javax.swing.JFrame{
         button3 = new LayMotSoUIdepTaiDay.ButtonMenu();
         LogoApp = new javax.swing.JLabel();
         HoaDonBT = new LayMotSoUIdepTaiDay.ButtonMenu();
+        button4 = new LayMotSoUIdepTaiDay.ButtonMenu();
         MainPanel = new javax.swing.JPanel();
         TrangThaiChuHo = new LayMotSoUIdepTaiDay.PanelTrangThai();
         TrangThaiNhanVien = new LayMotSoUIdepTaiDay.PanelTrangThai();
@@ -99,7 +107,7 @@ public final class MainNhanVienView extends javax.swing.JFrame{
         });
 
         button3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/9.png"))); // NOI18N
-        button3.setText("button3");
+        button3.setText("Danh sách nhân viên ");
         button3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         button3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,6 +129,15 @@ public final class MainNhanVienView extends javax.swing.JFrame{
             }
         });
 
+        button4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/9.png"))); // NOI18N
+        button4.setText("Thông tin ");
+        button4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        button4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout MenuLayout = new javax.swing.GroupLayout(Menu);
         Menu.setLayout(MenuLayout);
         MenuLayout.setHorizontalGroup(
@@ -128,13 +145,14 @@ public final class MainNhanVienView extends javax.swing.JFrame{
             .addGroup(MenuLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ThongTinSDDien, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(MenuLayout.createSequentialGroup()
                         .addComponent(LogoApp)
                         .addGap(0, 60, Short.MAX_VALUE))
                     .addComponent(DSChuHo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(button3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(HoaDonBT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(HoaDonBT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(button4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ThongTinSDDien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         MenuLayout.setVerticalGroup(
@@ -144,13 +162,15 @@ public final class MainNhanVienView extends javax.swing.JFrame{
                 .addComponent(LogoApp)
                 .addGap(62, 62, 62)
                 .addComponent(DSChuHo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ThongTinSDDien, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(button3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(HoaDonBT, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(button3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(319, Short.MAX_VALUE))
+                .addComponent(ThongTinSDDien, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(button4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(277, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout MainPanelLayout = new javax.swing.GroupLayout(MainPanel);
@@ -171,7 +191,6 @@ public final class MainNhanVienView extends javax.swing.JFrame{
         TrangThaiTien.setColor2(new java.awt.Color(255, 204, 0));
 
         simpleTitleBar1.setBackground(new java.awt.Color(0, 153, 204));
-        simpleTitleBar1.setForeground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout MainBorderLayout = new javax.swing.GroupLayout(MainBorder);
         MainBorder.setLayout(MainBorderLayout);
@@ -254,6 +273,10 @@ public final class MainNhanVienView extends javax.swing.JFrame{
             HoaDonBT.Nhan();
             this.setForm(new DSHoaDonView());
     }//GEN-LAST:event_HoaDonBTActionPerformed
+
+    private void button4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_button4ActionPerformed
     
     
     public void setForm(JComponent com){
@@ -276,6 +299,7 @@ public final class MainNhanVienView extends javax.swing.JFrame{
     private LayMotSoUIdepTaiDay.PanelTrangThai TrangThaiNhanVien;
     private LayMotSoUIdepTaiDay.PanelTrangThai TrangThaiTien;
     private LayMotSoUIdepTaiDay.ButtonMenu button3;
+    private LayMotSoUIdepTaiDay.ButtonMenu button4;
     private LayMotSoUIdepTaiDay.SimpleTitleBar simpleTitleBar1;
     // End of variables declaration//GEN-END:variables
 
