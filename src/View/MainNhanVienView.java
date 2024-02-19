@@ -10,30 +10,37 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Image;
 import java.text.DecimalFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 
-public final class MainNhanVienView extends javax.swing.JFrame {
+public final class MainNhanVienView extends javax.swing.JFrame{
+    DecimalFormat decimalFormat = new DecimalFormat("#");
+    DecimalFormat decimalFormat2 = new DecimalFormat("#.##");
+    public void CapNhatBangTrangThai(){
+        TrangThaiChuHo.setSoLuong(decimalFormat.format(new DSChuHoController().SoluongChuho()));
+        TrangThaiNhanVien.setSoLuong(decimalFormat.format(new DSStaffsController().soluongStaff()));
+        TrangThaiTien.setSoLuong(decimalFormat2.format(new InvoiceController().getTotalprice()) + " VNĐ");
+        this.repaint();
+    }
     
     public MainNhanVienView(){
         initComponents();
         setBackground(new Color(0, 0, 0, 0));
         simpleTitleBar1.init(this);
-            
-        DecimalFormat decimalFormat = new DecimalFormat("#");
         
         TrangThaiChuHo.setLabel("Số chủ hộ: ");
-        TrangThaiChuHo.setSoLuong(decimalFormat.format(new DSChuHoController().SoluongChuho()));
-        
-        TrangThaiNhanVien.setLabel("Số nhân viên: ");
-        TrangThaiNhanVien.setSoLuong(decimalFormat.format(new DSStaffsController().soluongStaff()));
-        
-        DecimalFormat decimalFormat2 = new DecimalFormat("#.##");
-        
+        TrangThaiNhanVien.setLabel("Số nhân viên: ");       
         TrangThaiTien.setLabel("Tổng doanh thu: ");
-        TrangThaiTien.setSoLuong(decimalFormat2.format(new InvoiceController().getTotalprice()) + " VNĐ");
+        try {
+            CapNhatBangTrangThai();
+        } catch (Exception ex) {
+            Logger.getLogger(MainNhanVienView.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         ImageIcon imageNguoi = new ImageIcon("src/Icon/profile.png");
         ImageIcon imageTien = new ImageIcon("src/Icon/profit.png");
@@ -42,7 +49,7 @@ public final class MainNhanVienView extends javax.swing.JFrame {
         TrangThaiTien.setIcon(imageTien);
         
     }
-
+    
     public JPanel getMainPanel() {
         return MainPanel;
     }

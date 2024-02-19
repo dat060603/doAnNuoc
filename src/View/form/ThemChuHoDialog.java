@@ -1,7 +1,11 @@
 package View.form;
 
+import Component.CheckTruongDuLieu;
 import Controller.ChuHoController.DSChuHoController;
+import Controller.PersonalInFoController.DSPersonalInfoController;
 import Model.ChuHo;
+import View.DSChuHoView;
+import View.MainNhanVienView;
 import javax.swing.JOptionPane;
 
 public class ThemChuHoDialog extends javax.swing.JDialog {
@@ -192,20 +196,28 @@ public class ThemChuHoDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void okBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okBTActionPerformed
-        //Kiểm tra Text field có bị trống không
-        if( CccdTF.getText().equals("") || SdtTF.getText().equals("") || HoTenTF.getText().equals("") 
-            || DobDC.equals("") || DiaChiTF.getText().equals("") || cccdNVTF.getText().equals("")
+        // Kiểm tra Text field có bị trống không
+        if(CccdTF.getText().equals("") || SdtTF.getText().equals("") || HoTenTF.getText().equals("") 
+            || DiaChiTF.getText().equals("") || cccdNVTF.getText().equals("")
             || UsernameTF.getText().equals("") || PassTF.getText().equals("") || PassConfirmTF.getText().equals("")){
             JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin!");
         } 
         else if(!PassTF.getText().equals(PassConfirmTF.getText())){
             JOptionPane.showMessageDialog(this, "Vui lòng xác nhận đúng mật khẩu bạn đã nhập!");
         }
-        else{
-            System.out.println("Debug here");
+        else if(!(CheckTruongDuLieu.KtraCCCD(CccdTF.getText()) && CheckTruongDuLieu.KtraCCCD(cccdNVTF.getText()) && CheckTruongDuLieu.KtraSDT(SdtTF.getText()) && CheckTruongDuLieu.KtraDate(DobDC))){
+            JOptionPane.showMessageDialog(this, "Vui lòng xem lại và nhập thông tin hợp lệ!");
+        }
+        else if(!(new DSPersonalInfoController().CheckTonTaiCCCD(CccdTF.getText()) || new DSPersonalInfoController().CheckTonTaiCCCD(cccdNVTF.getText()))){
+            JOptionPane.showMessageDialog(this, "CCCD đã tồn tại!!!");
+        } 
+        else {    
             ChuHo chuHo;
             chuHo = new ChuHo(CccdTF.getText(), HoTenTF.getText(), DiaChiTF.getText(), SdtTF.getText(), new java.sql.Date(DobDC.getDate().getTime()));
             new DSChuHoController().ThemChuHo(chuHo, UsernameTF.getText(), PassTF.getText(), cccdNVTF.getText());
+            JOptionPane.showMessageDialog(this, "Đã thêm tài khoản của chủ hộ có CCCD: " + CccdTF.getText());
+            
+            
             this.dispose();
         }
     }//GEN-LAST:event_okBTActionPerformed
