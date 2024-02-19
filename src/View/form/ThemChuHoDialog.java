@@ -2,12 +2,6 @@ package View.form;
 
 import Controller.ChuHoController.DSChuHoController;
 import Model.ChuHo;
-import static Support_Fuction.Fuction.convertStringToDate;
-import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class ThemChuHoDialog extends javax.swing.JDialog {
@@ -31,7 +25,6 @@ public class ThemChuHoDialog extends javax.swing.JDialog {
         HoTenTF = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        DobTF = new javax.swing.JTextField();
         cccdLbl = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         manvLbl = new javax.swing.JLabel();
@@ -45,6 +38,7 @@ public class ThemChuHoDialog extends javax.swing.JDialog {
         jLabel7 = new javax.swing.JLabel();
         PassConfirmTF = new javax.swing.JPasswordField();
         jSeparator1 = new javax.swing.JSeparator();
+        DobDC = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(806, 310));
@@ -103,6 +97,9 @@ public class ThemChuHoDialog extends javax.swing.JDialog {
         jSeparator1.setForeground(new java.awt.Color(204, 204, 204));
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
+        DobDC.setDateFormatString("yyyy / MM / dd");
+        DobDC.setMinSelectableDate(new java.util.Date(-62135791121000L));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -117,13 +114,13 @@ public class ThemChuHoDialog extends javax.swing.JDialog {
                     .addComponent(manvLbl)
                     .addComponent(jLabel4))
                 .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(DobTF, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(DiaChiTF, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(HoTenTF, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SdtTF, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cccdNVTF, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CccdTF, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(DiaChiTF, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
+                    .addComponent(HoTenTF, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
+                    .addComponent(SdtTF, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
+                    .addComponent(cccdNVTF, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
+                    .addComponent(CccdTF, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
+                    .addComponent(DobDC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -160,11 +157,12 @@ public class ThemChuHoDialog extends javax.swing.JDialog {
                     .addComponent(jLabel5)
                     .addComponent(UsernameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(DobTF, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
-                    .addComponent(PassTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(jLabel6)
+                        .addComponent(PassTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(DobDC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -196,7 +194,7 @@ public class ThemChuHoDialog extends javax.swing.JDialog {
     private void okBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okBTActionPerformed
         //Kiểm tra Text field có bị trống không
         if( CccdTF.getText().equals("") || SdtTF.getText().equals("") || HoTenTF.getText().equals("") 
-            || DobTF.getText().equals("") || DiaChiTF.getText().equals("") || cccdNVTF.getText().equals("")
+            || DobDC.equals("") || DiaChiTF.getText().equals("") || cccdNVTF.getText().equals("")
             || UsernameTF.getText().equals("") || PassTF.getText().equals("") || PassConfirmTF.getText().equals("")){
             JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin!");
         } 
@@ -204,13 +202,10 @@ public class ThemChuHoDialog extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Vui lòng xác nhận đúng mật khẩu bạn đã nhập!");
         }
         else{
+            System.out.println("Debug here");
             ChuHo chuHo;
-            try {
-                chuHo = new ChuHo(CccdTF.getText(), HoTenTF.getText(), DiaChiTF.getText(), SdtTF.getText(), convertStringToDate(DobTF.getText()));
-                new DSChuHoController().ThemChuHo(chuHo, UsernameTF.getText(), PassTF.getText(), cccdNVTF.getText());
-            } catch (ParseException ex) {
-                Logger.getLogger(ThemChuHoDialog.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            chuHo = new ChuHo(CccdTF.getText(), HoTenTF.getText(), DiaChiTF.getText(), SdtTF.getText(), new java.sql.Date(DobDC.getDate().getTime()));
+            new DSChuHoController().ThemChuHo(chuHo, UsernameTF.getText(), PassTF.getText(), cccdNVTF.getText());
             this.dispose();
         }
     }//GEN-LAST:event_okBTActionPerformed
@@ -226,7 +221,7 @@ public class ThemChuHoDialog extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField CccdTF;
     private javax.swing.JTextField DiaChiTF;
-    private javax.swing.JTextField DobTF;
+    private com.toedter.calendar.JDateChooser DobDC;
     private javax.swing.JTextField HoTenTF;
     private javax.swing.JPasswordField PassConfirmTF;
     private javax.swing.JPasswordField PassTF;
