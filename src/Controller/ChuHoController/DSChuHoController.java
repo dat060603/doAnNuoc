@@ -64,8 +64,15 @@ public class DSChuHoController {
         }
     }
     
-    public void ThemChuHo (String keyword, JTable table){
-        
+    public void ThemChuHo (ChuHo chuHo, String Username, String Pass, String CCCD_NV){
+        dsChuHo.add(chuHo);
+
+        try {
+            new ChuHoDAO().ThemChuHoDAO(chuHo, Username, Pass, CCCD_NV);
+        } catch (Exception ex) {
+            Logger.getLogger(DSChuHoController.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Lỗi ở method ThemChuHo!");
+        }
     }
     
     public int SoluongChuho(){

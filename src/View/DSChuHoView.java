@@ -20,7 +20,7 @@ public class DSChuHoView extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) BangDSChuHo.getModel();
         int i = 0;
         for(ChuHo chuHo : dsChuHO){
-            Object[] rowData = {chuHo.getCCCD(),chuHo.getUsername(), chuHo.getAddress(), chuHo.getPhone(), chuHo.getDOB()};
+            Object[] rowData = {chuHo.getCCCD(),chuHo.getUsername(), chuHo.getDOB(), chuHo.getAddress(), chuHo.getPhone()};
             model.insertRow(i++,rowData);   
         }
         model.fireTableDataChanged();

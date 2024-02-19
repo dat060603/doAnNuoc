@@ -1,10 +1,16 @@
 package View.form;
 
-import View.DSChuHoView;
+import Controller.ChuHoController.DSChuHoController;
+import Model.ChuHo;
+import static Support_Fuction.Fuction.convertStringToDate;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class ThemChuHoDialog extends javax.swing.JDialog {
-
     public ThemChuHoDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -18,149 +24,226 @@ public class ThemChuHoDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        manvTf = new javax.swing.JTextField();
-        sdtTf = new javax.swing.JTextField();
-        okBtn = new javax.swing.JButton();
-        hủyBtn = new javax.swing.JButton();
-        tenTf = new javax.swing.JTextField();
+        SdtTF = new javax.swing.JTextField();
+        cccdNVTF = new javax.swing.JTextField();
+        okBT = new javax.swing.JButton();
+        huyBT = new javax.swing.JButton();
+        HoTenTF = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        dobTf = new javax.swing.JTextField();
+        DobTF = new javax.swing.JTextField();
         cccdLbl = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         manvLbl = new javax.swing.JLabel();
-        diachiTf = new javax.swing.JTextField();
-        cccdTf = new javax.swing.JTextField();
+        DiaChiTF = new javax.swing.JTextField();
+        CccdTF = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        UsernameTF = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        PassTF = new javax.swing.JPasswordField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        PassConfirmTF = new javax.swing.JPasswordField();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(416, 337));
+        setPreferredSize(new java.awt.Dimension(806, 310));
 
-        okBtn.setText("OK");
-        okBtn.addActionListener(new java.awt.event.ActionListener() {
+        okBT.setText("OK");
+        okBT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                okBtnActionPerformed(evt);
+                okBTActionPerformed(evt);
             }
         });
 
-        hủyBtn.setText("Hủy");
-        hủyBtn.addActionListener(new java.awt.event.ActionListener() {
+        huyBT.setText("Hủy");
+        huyBT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                hủyBtnActionPerformed(evt);
+                huyBTActionPerformed(evt);
             }
         });
 
+        HoTenTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HoTenTFActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel1.setText("Họ tên:");
+        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel2.setText("Ngày sinh:");
+        jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
+        cccdLbl.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         cccdLbl.setText("CCCD:");
+        cccdLbl.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel3.setText("Địa chỉ:");
+        jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
-        manvLbl.setText("Mã nhân viên:");
+        manvLbl.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        manvLbl.setText("CCCD nhân viên:");
+        manvLbl.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel4.setText("Số điên thoại:");
+        jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+
+        jLabel5.setText("Username:");
+
+        jLabel6.setText("Password: ");
+
+        jLabel7.setText("Confirm password:");
+
+        jSeparator1.setBackground(new java.awt.Color(204, 204, 204));
+        jSeparator1.setForeground(new java.awt.Color(204, 204, 204));
+        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addComponent(cccdLbl)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(manvLbl)
+                    .addComponent(jLabel4))
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(DobTF, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DiaChiTF, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(HoTenTF, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SdtTF, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cccdNVTF, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CccdTF, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(manvLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(manvTf, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cccdLbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cccdTf)
-                                    .addComponent(tenTf)
-                                    .addComponent(dobTf)
-                                    .addComponent(diachiTf)
-                                    .addComponent(sdtTf, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(37, 37, 37))
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel7))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(UsernameTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                            .addComponent(PassTF, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(PassConfirmTF))
+                        .addGap(35, 35, 35))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(okBtn)
-                        .addGap(45, 45, 45)
-                        .addComponent(hủyBtn)
-                        .addGap(57, 57, 57))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
+                        .addComponent(okBT, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42)
+                        .addComponent(huyBT, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(58, 58, 58))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cccdLbl)
-                    .addComponent(cccdTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(CccdTF, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(HoTenTF, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
-                    .addComponent(tenTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel5)
+                    .addComponent(UsernameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(dobTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(DobTF, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6)
+                    .addComponent(PassTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(diachiTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(sdtTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(manvLbl)
-                    .addComponent(manvTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(okBtn)
-                    .addComponent(hủyBtn))
-                .addContainerGap(30, Short.MAX_VALUE))
+                    .addComponent(DiaChiTF, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7)
+                    .addComponent(PassConfirmTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(SdtTF, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cccdNVTF, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(manvLbl)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(okBT)
+                            .addComponent(huyBT))))
+                .addContainerGap(23, Short.MAX_VALUE))
+            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void okBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okBtnActionPerformed
+    private void okBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okBTActionPerformed
         //Kiểm tra Text field có bị trống không
-        if( cccdTf.getText().equals("") || manvTf.getText().equals("") || tenTf.getText().equals("") || dobTf.getText().equals("") || diachiTf.getText().equals("") || sdtTf.getText().equals("")){
-            JOptionPane.showMessageDialog(this, "Thiếu thông tin!");
-        }else{
-            //Không thì lưu data và về lại DS chủ hộ view
+        if( CccdTF.getText().equals("") || SdtTF.getText().equals("") || HoTenTF.getText().equals("") 
+            || DobTF.getText().equals("") || DiaChiTF.getText().equals("") || cccdNVTF.getText().equals("")
+            || UsernameTF.getText().equals("") || PassTF.getText().equals("") || PassConfirmTF.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin!");
+        } 
+        else if(!PassTF.getText().equals(PassConfirmTF.getText())){
+            JOptionPane.showMessageDialog(this, "Vui lòng xác nhận đúng mật khẩu bạn đã nhập!");
+        }
+        else{
+            ChuHo chuHo;
+            try {
+                chuHo = new ChuHo(CccdTF.getText(), HoTenTF.getText(), DiaChiTF.getText(), SdtTF.getText(), convertStringToDate(DobTF.getText()));
+                new DSChuHoController().ThemChuHo(chuHo, UsernameTF.getText(), PassTF.getText(), cccdNVTF.getText());
+            } catch (ParseException ex) {
+                Logger.getLogger(ThemChuHoDialog.class.getName()).log(Level.SEVERE, null, ex);
+            }
             this.dispose();
         }
-    }//GEN-LAST:event_okBtnActionPerformed
+    }//GEN-LAST:event_okBTActionPerformed
 
-    private void hủyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hủyBtnActionPerformed
+    private void huyBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_huyBTActionPerformed
         this.dispose();
-    }//GEN-LAST:event_hủyBtnActionPerformed
+    }//GEN-LAST:event_huyBTActionPerformed
+
+    private void HoTenTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HoTenTFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_HoTenTFActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField CccdTF;
+    private javax.swing.JTextField DiaChiTF;
+    private javax.swing.JTextField DobTF;
+    private javax.swing.JTextField HoTenTF;
+    private javax.swing.JPasswordField PassConfirmTF;
+    private javax.swing.JPasswordField PassTF;
+    private javax.swing.JTextField SdtTF;
+    private javax.swing.JTextField UsernameTF;
     private javax.swing.JLabel cccdLbl;
-    private javax.swing.JTextField cccdTf;
-    private javax.swing.JTextField diachiTf;
-    private javax.swing.JTextField dobTf;
-    private javax.swing.JButton hủyBtn;
+    private javax.swing.JTextField cccdNVTF;
+    private javax.swing.JButton huyBT;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel manvLbl;
-    private javax.swing.JTextField manvTf;
-    private javax.swing.JButton okBtn;
-    private javax.swing.JTextField sdtTf;
-    private javax.swing.JTextField tenTf;
+    private javax.swing.JButton okBT;
     // End of variables declaration//GEN-END:variables
 }

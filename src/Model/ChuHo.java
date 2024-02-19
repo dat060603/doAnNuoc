@@ -57,4 +57,11 @@ public class ChuHo {
     }
     
     public ChuHo(){};
+
+    @Override
+    public String toString() {
+        return "ChuHo{" + "CCCD=" + CCCD + ", Username=" + Username + ", Address=" + Address + ", Phone=" + Phone + ", DOB=" + DOB + '}';
+    }
+    
+    
 }
