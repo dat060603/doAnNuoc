@@ -2,13 +2,14 @@ package View;
 
 //import View.NhanVienView.ThongTinSDDienView;
 import Controller.ChuHoController.DSChuHoController;
-import Controller.ChuHoController.InvoiceController;
-import Controller.ChuHoController.StaffController;
+import Controller.InvoicesController.InvoiceController;
+import Controller.StaffsController.DSStaffsController;
 import LayMotSoUIdepTaiDay.ButtonMenu;
 import View.DSChuHoView;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Image;
+import java.text.DecimalFormat;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -20,9 +21,20 @@ public final class MainNhanVienView extends javax.swing.JFrame {
         initComponents();
         setBackground(new Color(0, 0, 0, 0));
         simpleTitleBar1.init(this);
-        TrangThaiChuHo.setLabel("Số chủ hộ: "+new DSChuHoController().SoluongChuho());
-        TrangThaiNhanVien.setLabel("Số nhân viên: "+new StaffController().soluongStaff());
-        TrangThaiTien.setLabel("Tổng doanh thu: " +new InvoiceController().getTotalprice());
+            
+        DecimalFormat decimalFormat = new DecimalFormat("#");
+        
+        TrangThaiChuHo.setLabel("Số chủ hộ: ");
+        TrangThaiChuHo.setSoLuong(decimalFormat.format(new DSChuHoController().SoluongChuho()));
+        
+        TrangThaiNhanVien.setLabel("Số nhân viên: ");
+        TrangThaiNhanVien.setSoLuong(decimalFormat.format(new DSStaffsController().soluongStaff()));
+        
+        DecimalFormat decimalFormat2 = new DecimalFormat("#.##");
+        
+        TrangThaiTien.setLabel("Tổng doanh thu: ");
+        TrangThaiTien.setSoLuong(decimalFormat2.format(new InvoiceController().getTotalprice()) + " VNĐ");
+        
         ImageIcon imageNguoi = new ImageIcon("src/Icon/profile.png");
         ImageIcon imageTien = new ImageIcon("src/Icon/profit.png");
         TrangThaiChuHo.setIcon(imageNguoi);

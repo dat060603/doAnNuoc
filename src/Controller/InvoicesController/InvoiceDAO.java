@@ -1,5 +1,5 @@
 
-package Controller.ChuHoController;
+package Controller.InvoicesController;
 
 import Database.DBS;
 import java.math.BigDecimal;

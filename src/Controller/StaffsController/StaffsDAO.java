@@ -1,5 +1,5 @@
 
-package Controller.ChuHoController;
+package Controller.StaffsController;
 
 import Database.DBS;
 import Model.Staff;
@@ -12,14 +12,14 @@ public class StaffsDAO {
     public void Lammoi(){
         lstStaffs.clear();
     }
-    
+
     public List<Staff>getAll() throws Exception{
         Lammoi();
         String SQL="SELECT P.CCCD, P.Username, P.DOB, P.Address, P.Phone \n" +
                     "FROM STAFFS AS s \n" +
                     "JOIN PERSON_INFO AS P ON s.CCCD = P.CCCD \n" +
                     "JOIN ACCOUNT AS a ON s.CCCD = a.CCCD \n" +
-                    "WHERE a.Da_Xoa = 0 ";
+                    "WHERE a.Da_Xoa = 0 AND a.Privilege = 1";
         
         
           try(

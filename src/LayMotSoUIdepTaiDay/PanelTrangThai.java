@@ -32,7 +32,7 @@ public class PanelTrangThai extends javax.swing.JPanel {
     public PanelTrangThai() {
         initComponents();
         this.setOpaque(false);
-        
+
         //Chỉnh màu ở đây, màu 1 là nền, màu hai là hình tròn
         color1 = new Color(204, 153, 255);
         color2 = new Color(229, 204, 255);
@@ -120,9 +120,8 @@ public class PanelTrangThai extends javax.swing.JPanel {
         return SoLuong;
     }
 
-    public void setSoLuong(Double SoLuong) {
-        String soluong = String.valueOf(SoLuong);
-        this.SoLuong.setText(soluong);
+    public void setSoLuong(String SoLuong) {
+        this.SoLuong.setText(SoLuong);
     }
 
 

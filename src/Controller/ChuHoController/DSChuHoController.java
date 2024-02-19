@@ -68,10 +68,6 @@ public class DSChuHoController {
         
     }
     
-    public void ShowDSChuHo (JTable table){
-
-    }
-    
     public int SoluongChuho(){
         return dsChuHo.size();
     }
