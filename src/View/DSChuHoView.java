@@ -7,6 +7,7 @@ import View.form.XoaChuHoDialog;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 public class DSChuHoView extends javax.swing.JPanel {
+    
     public DSChuHoView() {
         initComponents();
         this.setSize(new MainNhanVienView().getMainPanel().getSize());
@@ -20,7 +21,7 @@ public class DSChuHoView extends javax.swing.JPanel {
         int i = 0;
         for(ChuHo chuHo : dsChuHO){
             Object[] rowData = {chuHo.getCCCD(),chuHo.getUsername(), chuHo.getAddress(), chuHo.getPhone(), chuHo.getDOB()};
-            model.insertRow(i++,rowData);
+            model.insertRow(i++,rowData);   
         }
         model.fireTableDataChanged();
     }

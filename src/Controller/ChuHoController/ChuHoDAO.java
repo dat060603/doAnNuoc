@@ -7,8 +7,15 @@ import java.util.List;
 import java.sql.*;
 
 public class ChuHoDAO {
+    
+    private List<ChuHo>lstChuHo=new ArrayList<>();
+    
+    public void Lammoi(){
+        lstChuHo.clear();
+    }
+    
     public List<ChuHo> getAll() throws Exception{
-        List<ChuHo> lstChuHo = new ArrayList();
+        Lammoi();
         String SQL = "SELECT P.CCCD, P.Username, P.DOB, P.Address, P.Phone\n" +
                      "FROM [dbo].[PERSON_INFO] AS P\n" +
                      "JOIN [dbo].[ACCOUNT] AS A\n" +
@@ -33,4 +40,5 @@ public class ChuHoDAO {
         
         return lstChuHo;
     }
+    
 }

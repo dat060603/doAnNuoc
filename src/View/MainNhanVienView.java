@@ -1,6 +1,9 @@
 package View;
 
 //import View.NhanVienView.ThongTinSDDienView;
+import Controller.ChuHoController.DSChuHoController;
+import Controller.ChuHoController.InvoiceController;
+import Controller.ChuHoController.StaffController;
 import LayMotSoUIdepTaiDay.ButtonMenu;
 import View.DSChuHoView;
 import java.awt.BorderLayout;
@@ -17,9 +20,9 @@ public final class MainNhanVienView extends javax.swing.JFrame {
         initComponents();
         setBackground(new Color(0, 0, 0, 0));
         simpleTitleBar1.init(this);
-        TrangThaiChuHo.setLabel("Số chủ hộ: ");
-        TrangThaiNhanVien.setLabel("Số nhân viên: ");
-        TrangThaiTien.setLabel("Tổng doanh thu: ");
+        TrangThaiChuHo.setLabel("Số chủ hộ: "+new DSChuHoController().SoluongChuho());
+        TrangThaiNhanVien.setLabel("Số nhân viên: "+new StaffController().soluongStaff());
+        TrangThaiTien.setLabel("Tổng doanh thu: " +new InvoiceController().getTotalprice());
         ImageIcon imageNguoi = new ImageIcon("src/Icon/profile.png");
         ImageIcon imageTien = new ImageIcon("src/Icon/profit.png");
         TrangThaiChuHo.setIcon(imageNguoi);

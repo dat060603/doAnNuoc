@@ -1,10 +1,6 @@
 
 package View;
 
-/**
- *
- * @author ME1
- */
 public class Login extends javax.swing.JFrame {
 
     /**

@@ -12,7 +12,12 @@ import javax.swing.table.DefaultTableModel;
 public class DSChuHoController {
     private List<ChuHo> dsChuHo;
 
+    public void refresh(){
+        this.dsChuHo.clear();
+    }
+    
     public DSChuHoController() {
+//        refresh();
         try {
             this.dsChuHo = new ChuHoDAO().getAll();
         } catch (Exception ex) {
@@ -65,5 +70,9 @@ public class DSChuHoController {
     
     public void ShowDSChuHo (JTable table){
 
+    }
+    
+    public int SoluongChuho(){
+        return dsChuHo.size();
     }
 }
