@@ -1,12 +1,16 @@
 package View.form;
 
+import Component.CheckTruongDuLieu;
+import Controller.ChuHoController.DSChuHoController;
+import View.DSChuHoView;
+import View.MainNhanVienView;
 import javax.swing.JOptionPane;
 
 public class XoaChuHoDialog extends javax.swing.JDialog {
-
-    public XoaChuHoDialog(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    private MainNhanVienView mainNhanVienView;
+    public XoaChuHoDialog(MainNhanVienView Frame, boolean modal) {
         initComponents();
+        this.mainNhanVienView = Frame;
         this.setSize(400, 175);
         this.setResizable(false);
         this.setTitle("Xóa chủ hộ");
@@ -19,17 +23,14 @@ public class XoaChuHoDialog extends javax.swing.JDialog {
 
         cccdTf = new javax.swing.JTextField();
         cccdLbl = new javax.swing.JLabel();
-        manvLbl = new javax.swing.JLabel();
-        manvTf = new javax.swing.JTextField();
         okBtn = new javax.swing.JButton();
         hủyBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(376, 166));
+        setPreferredSize(new java.awt.Dimension(420, 120));
+        setSize(new java.awt.Dimension(420, 120));
 
-        cccdLbl.setText("CCCD:");
-
-        manvLbl.setText("Mã nhân viên:");
+        cccdLbl.setText("Nhập CCCD cần xóa:");
 
         okBtn.setText("OK");
         okBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -50,40 +51,28 @@ public class XoaChuHoDialog extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(141, 141, 141)
-                        .addComponent(okBtn)
-                        .addGap(39, 39, 39)
-                        .addComponent(hủyBtn))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(cccdLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cccdTf, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(manvLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(manvTf, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addGap(16, 16, 16)
+                .addComponent(cccdLbl)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(okBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(hủyBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cccdTf, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cccdLbl)
-                    .addComponent(cccdTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cccdTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cccdLbl))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(manvLbl)
-                    .addComponent(manvTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(okBtn)
-                    .addComponent(hủyBtn))
+                    .addComponent(hủyBtn)
+                    .addComponent(okBtn))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
@@ -92,10 +81,19 @@ public class XoaChuHoDialog extends javax.swing.JDialog {
 
     private void okBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okBtnActionPerformed
         //Kiểm tra Text field có bị trống không
-        if(cccdTf.getText().equals("") || manvTf.getText().equals("")){
-            JOptionPane.showMessageDialog(this, "Thiếu thông tin!");
+        if(cccdTf.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Vui lòng không được bỏ trống");
+        }else if(!(CheckTruongDuLieu.KtraCCCD(cccdTf.getText()))){
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập đúng CCCD (phải là các chữ số có đủ 12 ký tự)");
+        }else if(!(new DSChuHoController().checkTonTaiChuHo(cccdTf.getText()))){
+            JOptionPane.showMessageDialog(this, "Chủ hộ có CCCD: " + cccdTf.getText() + " không tồn tại!");
         }else{
-            //Không thì lưu data và về lại DS chủ hộ view
+            new DSChuHoController().XoaChuHo(cccdTf.getText());
+            JOptionPane.showMessageDialog(this, "Đã xóa chủ hộ có CCCD: " + cccdTf.getText() + " thành công!");
+            
+            mainNhanVienView.CapNhatBangTrangThai();
+            mainNhanVienView.setForm(new DSChuHoView(mainNhanVienView));
+            
             this.dispose();
         }
     }//GEN-LAST:event_okBtnActionPerformed
@@ -108,8 +106,6 @@ public class XoaChuHoDialog extends javax.swing.JDialog {
     private javax.swing.JLabel cccdLbl;
     private javax.swing.JTextField cccdTf;
     private javax.swing.JButton hủyBtn;
-    private javax.swing.JLabel manvLbl;
-    private javax.swing.JTextField manvTf;
     private javax.swing.JButton okBtn;
     // End of variables declaration//GEN-END:variables
 }

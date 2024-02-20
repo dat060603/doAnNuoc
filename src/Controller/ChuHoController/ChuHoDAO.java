@@ -5,6 +5,8 @@ import Model.ChuHo;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ChuHoDAO {
     
@@ -93,19 +95,35 @@ public class ChuHoDAO {
                 int rowsAffected2 = rs2.executeUpdate();
                 int rowsAffected3 = rs3.executeUpdate();
                     if (rowsAffected1 > 0 && rowsAffected2 > 0 && rowsAffected3 > 0 ) {
-                        System.out.println("Tài khoản đã được thêm vào DBS!!!");
+                        System.out.println("Tài khoản đã được thêm vào hệ thống!!!");
                     } else {
-                        System.out.println("Lỗi không thể thêm tài khoản vào DBS!!!");
+                        System.out.println("Lỗi không thể thêm tài khoản vào hệ thống!!!");
                 }
         }
         } else {
             System.out.println("Lỗi không tìm được nhân viên!!!");
-        }
- 
-        
+        }     
+    }
+    
+    public void XoaChuHoDAO(String CCCD_ChuHo){
+        String SQL = "UPDATE [dbo].[ACCOUNT]\n" +
+                    "SET [Da_Xoa] = 1\n" +
+                    "WHERE [CCCD] = ?";
+        try {
+            Connection con = new DBS().getConnection();
+            PreparedStatement stmt = con.prepareStatement(SQL);
+            stmt.setString(1, CCCD_ChuHo);
 
+            int affectedRows = stmt.executeUpdate();
         
-   
+            if (affectedRows > 0) {
+                System.out.println("Thông báo hệ thống đã xóa chủ hộ có CCCD: " + CCCD_ChuHo + " thành công!");
+            } else {
+                System.out.println("Xóa chủ hộ có CCCD: " + CCCD_ChuHo + " trên hệ thống thất bại!!!");
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(ChuHoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }

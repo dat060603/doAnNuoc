@@ -63,12 +63,6 @@ public class ThemChuHoDialog extends javax.swing.JDialog {
             }
         });
 
-        HoTenTF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                HoTenTFActionPerformed(evt);
-            }
-        });
-
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel1.setText("Họ tên:");
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
@@ -211,7 +205,7 @@ public class ThemChuHoDialog extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Vui lòng xem lại và nhập thông tin hợp lệ!");
         }
         else if(!(new DSPersonalInfoController().CheckTonTaiCCCD(CccdTF.getText()) || new DSPersonalInfoController().CheckTonTaiCCCD(cccdNVTF.getText()))){
-            JOptionPane.showMessageDialog(this, "CCCD đã tồn tại!!!");
+            JOptionPane.showMessageDialog(this, "CCCD đã tồn tại! Có thể đã nằm trên hệ thống và chỉ được ẩn đi!");
         } 
         else {    
             ChuHo chuHo;
@@ -229,10 +223,6 @@ public class ThemChuHoDialog extends javax.swing.JDialog {
     private void huyBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_huyBTActionPerformed
         this.dispose();
     }//GEN-LAST:event_huyBTActionPerformed
-
-    private void HoTenTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HoTenTFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_HoTenTFActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField CccdTF;

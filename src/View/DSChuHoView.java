@@ -160,7 +160,7 @@ public class DSChuHoView extends javax.swing.JPanel {
     }
 
     private void showXoaChuHoDialog() {
-        XoaChuHoDialog xoaChuHoDialog = new XoaChuHoDialog(new MainNhanVienView(), true);
+        XoaChuHoDialog xoaChuHoDialog = new XoaChuHoDialog(mainNhanVienView, true);
         xoaChuHoDialog.setVisible(true);
     }    
     

@@ -2,6 +2,7 @@
 package Controller.ChuHoController;
 
 import Model.ChuHo;
+import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -75,7 +76,28 @@ public class DSChuHoController {
         }
     }
     
+    public void XoaChuHo(String CCCD_ChuHo){
+        Iterator<ChuHo> iterator = dsChuHo.iterator();
+        while (iterator.hasNext()) {
+            ChuHo chuHo = iterator.next();
+            if (chuHo.getCCCD().equals(CCCD_ChuHo)) {
+                iterator.remove();
+            }
+        }
+        new ChuHoDAO().XoaChuHoDAO(CCCD_ChuHo);
+    }
+    
     public int SoluongChuho(){
         return dsChuHo.size();
     }
+    
+    public boolean checkTonTaiChuHo(String CCCD_ChuHo){
+        for(ChuHo chuHo : dsChuHo){
+            if(chuHo.getCCCD().equals(CCCD_ChuHo)){
+                return true;
+            }
+        }
+        return false;
+    }
+    
 }
