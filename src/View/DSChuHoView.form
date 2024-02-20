@@ -22,7 +22,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="ScrollPane" alignment="0" max="32767" attributes="0"/>
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="TimKiemTF" min="-2" pref="158" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -32,7 +32,10 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="XoaBT" min="-2" pref="120" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="SuaBT" min="-2" pref="120" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="LamMoiBT" pref="120" max="32767" attributes="0"/>
+                  <Component id="CapNhatBT" pref="120" max="32767" attributes="0"/>
+              </Group>
               <EmptySpace pref="63" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -46,10 +49,12 @@
                   <Component id="ThemBT" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                   <Component id="XoaBT" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                   <Component id="TimKiemBT" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                  <Component id="SuaBT" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="CapNhatBT" min="-2" pref="35" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
-              <Component id="ScrollPane" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="LamMoiBT" min="-2" pref="35" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+              <Component id="ScrollPane" pref="453" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -154,15 +159,26 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="XoaBTActionPerformed"/>
       </Events>
     </Component>
-    <Component class="LayMotSoUIdepTaiDay.ButtonThuong" name="SuaBT">
+    <Component class="LayMotSoUIdepTaiDay.ButtonThuong" name="CapNhatBT">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/Icon/6.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="S&#x1eed;a"/>
+        <Property name="text" type="java.lang.String" value="C&#x1ead;p nh&#x1ead;t"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SuaBTActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CapNhatBTActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="LayMotSoUIdepTaiDay.ButtonThuong" name="LamMoiBT">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Icon/Refresh.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="L&#xe0;m m&#x1edb;i"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LamMoiBTActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

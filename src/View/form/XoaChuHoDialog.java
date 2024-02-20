@@ -4,18 +4,22 @@ import Component.CheckTruongDuLieu;
 import Controller.ChuHoController.DSChuHoController;
 import View.DSChuHoView;
 import View.MainNhanVienView;
+import java.awt.Frame;
 import javax.swing.JOptionPane;
 
 public class XoaChuHoDialog extends javax.swing.JDialog {
     private MainNhanVienView mainNhanVienView;
-    public XoaChuHoDialog(MainNhanVienView Frame, boolean modal) {
+    private DSChuHoView dSChuHoView;
+    public XoaChuHoDialog(MainNhanVienView Frame, DSChuHoView FrameChuHoView,boolean modal) {
         initComponents();
         this.mainNhanVienView = Frame;
+        this.dSChuHoView = FrameChuHoView;
         this.setSize(400, 175);
         this.setResizable(false);
         this.setTitle("Xóa chủ hộ");
         this.setModalityType(DEFAULT_MODALITY_TYPE.APPLICATION_MODAL);
         this.setLocationRelativeTo(null);
+        cccdTf.setText(dSChuHoView.getCCCD_ChuHo());
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -88,14 +92,23 @@ public class XoaChuHoDialog extends javax.swing.JDialog {
         }else if(!(new DSChuHoController().checkTonTaiChuHo(cccdTf.getText()))){
             JOptionPane.showMessageDialog(this, "Chủ hộ có CCCD: " + cccdTf.getText() + " không tồn tại!");
         }else{
-            new DSChuHoController().XoaChuHo(cccdTf.getText());
-            JOptionPane.showMessageDialog(this, "Đã xóa chủ hộ có CCCD: " + cccdTf.getText() + " thành công!");
-            
-            mainNhanVienView.CapNhatBangTrangThai();
-            mainNhanVienView.setForm(new DSChuHoView(mainNhanVienView));
-            
-            this.dispose();
-        }
+            int confirm = JOptionPane.showConfirmDialog(
+                this,
+                "Bạn có chắc muốn xóa chủ hộ có CCCD: " + cccdTf.getText() + " không?",
+            "Xác nhận xóa",
+            JOptionPane.YES_NO_OPTION
+            );
+
+            if (confirm == JOptionPane.YES_OPTION) {
+                new DSChuHoController().XoaChuHo(cccdTf.getText());
+                JOptionPane.showMessageDialog(this, "Đã xóa chủ hộ có CCCD: " + cccdTf.getText() + " thành công!");
+
+                mainNhanVienView.CapNhatBangTrangThai();
+                mainNhanVienView.setForm(new DSChuHoView(mainNhanVienView));
+
+                this.dispose();
+            }
+            }
     }//GEN-LAST:event_okBtnActionPerformed
 
     private void hủyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hủyBtnActionPerformed

@@ -1,9 +1,9 @@
 package View.form;
 
 
-public class SuaChuHoDialog extends javax.swing.JDialog {
+public class CapNhatChuHo extends javax.swing.JDialog {
 
-    public SuaChuHoDialog(java.awt.Frame parent, boolean modal) {
+    public CapNhatChuHo(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.setResizable(false);

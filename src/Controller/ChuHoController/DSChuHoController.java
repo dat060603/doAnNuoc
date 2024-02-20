@@ -77,13 +77,6 @@ public class DSChuHoController {
     }
     
     public void XoaChuHo(String CCCD_ChuHo){
-        Iterator<ChuHo> iterator = dsChuHo.iterator();
-        while (iterator.hasNext()) {
-            ChuHo chuHo = iterator.next();
-            if (chuHo.getCCCD().equals(CCCD_ChuHo)) {
-                iterator.remove();
-            }
-        }
         new ChuHoDAO().XoaChuHoDAO(CCCD_ChuHo);
     }
     

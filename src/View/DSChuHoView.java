@@ -1,12 +1,25 @@
 package View;
 
 import Controller.ChuHoController.DSChuHoController;
+import LayMotSoUIdepTaiDay.BangDanhSach;
 import Model.ChuHo;
 import View.form.ThemChuHoDialog;
 import View.form.XoaChuHoDialog;
 import java.util.List;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 public class DSChuHoView extends javax.swing.JPanel {
+    private String CCCD_ChuHo;
+
+    public String getCCCD_ChuHo() {
+        return CCCD_ChuHo;
+    }
+
+    public void setCCCD_ChuHo(String CCCD_ChuHo) {
+        this.CCCD_ChuHo = CCCD_ChuHo;
+    }
+    
     private MainNhanVienView mainNhanVienView = new MainNhanVienView();
     public DSChuHoView(MainNhanVienView mnv) {
         initComponents();
@@ -14,6 +27,32 @@ public class DSChuHoView extends javax.swing.JPanel {
         this.setSize(mainNhanVienView.getMainPanel().getSize());
         this.setVisible(true);
         ShowThongTin();
+        
+        ListSelectionListener rowListener;
+        rowListener = new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if (!e.getValueIsAdjusting()) {
+                    int selectedRow = BangDSChuHo.getSelectedRow();
+                    if (selectedRow != -1) { 
+                        Object Ten = BangDSChuHo.getValueAt(selectedRow, 1); // Lấy dữ liệu từ hàng đó
+                        Object CCCD = BangDSChuHo.getValueAt(selectedRow, 0);
+                        // Xử lý dữ liệu
+                        TimKiemTF.setText((String) Ten);
+                        setCCCD_ChuHo((String) CCCD);
+                    }
+                }
+            };
+        };
+        BangDSChuHo.getSelectionModel().addListSelectionListener(rowListener);
+    }
+
+    public BangDanhSach getBangDSChuHo() {
+        return BangDSChuHo;
+    }
+
+    public void setBangDSChuHo(BangDanhSach BangDSChuHo) {
+        this.BangDSChuHo = BangDSChuHo;
     }
 
     public void ShowThongTin(){
@@ -37,7 +76,8 @@ public class DSChuHoView extends javax.swing.JPanel {
         BangDSChuHo = new LayMotSoUIdepTaiDay.BangDanhSach();
         ThemBT = new LayMotSoUIdepTaiDay.ButtonThuong();
         XoaBT = new LayMotSoUIdepTaiDay.ButtonThuong();
-        SuaBT = new LayMotSoUIdepTaiDay.ButtonThuong();
+        CapNhatBT = new LayMotSoUIdepTaiDay.ButtonThuong();
+        LamMoiBT = new LayMotSoUIdepTaiDay.ButtonThuong();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -96,11 +136,19 @@ public class DSChuHoView extends javax.swing.JPanel {
             }
         });
 
-        SuaBT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/6.png"))); // NOI18N
-        SuaBT.setText("Sửa");
-        SuaBT.addActionListener(new java.awt.event.ActionListener() {
+        CapNhatBT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/6.png"))); // NOI18N
+        CapNhatBT.setText("Cập nhật");
+        CapNhatBT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SuaBTActionPerformed(evt);
+                CapNhatBTActionPerformed(evt);
+            }
+        });
+
+        LamMoiBT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Refresh.png"))); // NOI18N
+        LamMoiBT.setText("Làm mới");
+        LamMoiBT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LamMoiBTActionPerformed(evt);
             }
         });
 
@@ -119,7 +167,9 @@ public class DSChuHoView extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(XoaBT, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(SuaBT, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(LamMoiBT, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                    .addComponent(CapNhatBT, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
                 .addContainerGap(63, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -131,9 +181,11 @@ public class DSChuHoView extends javax.swing.JPanel {
                     .addComponent(ThemBT, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(XoaBT, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TimKiemBT, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SuaBT, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(96, 96, 96)
-                .addComponent(ScrollPane))
+                    .addComponent(CapNhatBT, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(LamMoiBT, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48)
+                .addComponent(ScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -146,13 +198,17 @@ public class DSChuHoView extends javax.swing.JPanel {
         showXoaChuHoDialog();
     }//GEN-LAST:event_XoaBTActionPerformed
 
-    private void SuaBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SuaBTActionPerformed
+    private void CapNhatBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CapNhatBTActionPerformed
         
-    }//GEN-LAST:event_SuaBTActionPerformed
+    }//GEN-LAST:event_CapNhatBTActionPerformed
 
     private void ThemBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ThemBTActionPerformed
         showThemChuHoDialog();
     }//GEN-LAST:event_ThemBTActionPerformed
+
+    private void LamMoiBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LamMoiBTActionPerformed
+        mainNhanVienView.setForm(new DSChuHoView(mainNhanVienView));
+    }//GEN-LAST:event_LamMoiBTActionPerformed
     
     private void showThemChuHoDialog() {
         ThemChuHoDialog themChuHoDialog = new ThemChuHoDialog(mainNhanVienView, true);
@@ -160,14 +216,15 @@ public class DSChuHoView extends javax.swing.JPanel {
     }
 
     private void showXoaChuHoDialog() {
-        XoaChuHoDialog xoaChuHoDialog = new XoaChuHoDialog(mainNhanVienView, true);
+        XoaChuHoDialog xoaChuHoDialog = new XoaChuHoDialog(mainNhanVienView, this, true);
         xoaChuHoDialog.setVisible(true);
     }    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private LayMotSoUIdepTaiDay.BangDanhSach BangDSChuHo;
+    private LayMotSoUIdepTaiDay.ButtonThuong CapNhatBT;
+    private LayMotSoUIdepTaiDay.ButtonThuong LamMoiBT;
     private javax.swing.JScrollPane ScrollPane;
-    private LayMotSoUIdepTaiDay.ButtonThuong SuaBT;
     private LayMotSoUIdepTaiDay.ButtonThuong ThemBT;
     private LayMotSoUIdepTaiDay.ButtonThuong TimKiemBT;
     private javax.swing.JTextField TimKiemTF;
