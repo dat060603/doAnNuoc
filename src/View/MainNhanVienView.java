@@ -21,8 +21,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 
-public final class MainNhanVienView extends javax.swing.JFrame implements MainInterFace{
-    public static JButton bt = new JButton();
+public final class MainNhanVienView extends javax.swing.JFrame {
+    
     DecimalFormat decimalFormat = new DecimalFormat("#");
     DecimalFormat decimalFormat2 = new DecimalFormat("#.##");
     
@@ -31,13 +31,13 @@ public final class MainNhanVienView extends javax.swing.JFrame implements MainIn
         TrangThaiNhanVien.setSoLuong(decimalFormat.format(new DSStaffsController().soluongStaff()));
         TrangThaiTien.setSoLuong(decimalFormat2.format(new InvoiceController().getTotalprice()) + " VNĐ");
         this.repaint();
+        this.revalidate();
     }
     
     public MainNhanVienView(){
         initComponents();
         setBackground(new Color(0, 0, 0, 0));
         simpleTitleBar1.init(this);
-        this.add(bt);
         
         TrangThaiChuHo.setLabel("Số chủ hộ: ");
         TrangThaiNhanVien.setLabel("Số nhân viên: ");       
@@ -283,7 +283,7 @@ public final class MainNhanVienView extends javax.swing.JFrame implements MainIn
         // TODO add your handling code here:
     }//GEN-LAST:event_button4ActionPerformed
     
-    
+     
     public void setForm(JComponent com){
         MainPanel.removeAll();
         MainPanel.setLayout(new BorderLayout());
