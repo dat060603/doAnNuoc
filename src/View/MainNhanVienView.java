@@ -6,6 +6,7 @@ import Controller.InvoicesController.InvoiceController;
 import Controller.StaffsController.DSStaffsController;
 import LayMotSoUIdepTaiDay.ButtonMenu;
 import View.DSChuHoView;
+import View.form.ThemChuHoDialog;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Image;
@@ -14,14 +15,17 @@ import java.text.DecimalFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 
-public final class MainNhanVienView extends javax.swing.JFrame{
+public final class MainNhanVienView extends javax.swing.JFrame implements MainInterFace{
+    public static JButton bt = new JButton();
     DecimalFormat decimalFormat = new DecimalFormat("#");
     DecimalFormat decimalFormat2 = new DecimalFormat("#.##");
+    
     public void CapNhatBangTrangThai(){
         TrangThaiChuHo.setSoLuong(decimalFormat.format(new DSChuHoController().SoluongChuho()));
         TrangThaiNhanVien.setSoLuong(decimalFormat.format(new DSStaffsController().soluongStaff()));
@@ -33,6 +37,7 @@ public final class MainNhanVienView extends javax.swing.JFrame{
         initComponents();
         setBackground(new Color(0, 0, 0, 0));
         simpleTitleBar1.init(this);
+        this.add(bt);
         
         TrangThaiChuHo.setLabel("Số chủ hộ: ");
         TrangThaiNhanVien.setLabel("Số nhân viên: ");       
@@ -248,7 +253,7 @@ public final class MainNhanVienView extends javax.swing.JFrame{
             ThongTinSDDien.Reset();
             button3.Reset();
             HoaDonBT.Reset();
-            this.setForm(new DSChuHoView());
+            this.setForm(new DSChuHoView(this));
     }//GEN-LAST:event_DSChuHoActionPerformed
 
     private void ThongTinSDDienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ThongTinSDDienActionPerformed

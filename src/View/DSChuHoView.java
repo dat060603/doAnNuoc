@@ -7,10 +7,11 @@ import View.form.XoaChuHoDialog;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 public class DSChuHoView extends javax.swing.JPanel {
-    
-    public DSChuHoView() {
+    private MainNhanVienView mainNhanVienView = new MainNhanVienView();
+    public DSChuHoView(MainNhanVienView mnv) {
         initComponents();
-        this.setSize(new MainNhanVienView().getMainPanel().getSize());
+        this.mainNhanVienView = mnv;
+        this.setSize(mainNhanVienView.getMainPanel().getSize());
         this.setVisible(true);
         ShowThongTin();
     }
@@ -154,7 +155,7 @@ public class DSChuHoView extends javax.swing.JPanel {
     }//GEN-LAST:event_ThemBTActionPerformed
     
     private void showThemChuHoDialog() {
-        ThemChuHoDialog themChuHoDialog = new ThemChuHoDialog(new MainNhanVienView(), true);
+        ThemChuHoDialog themChuHoDialog = new ThemChuHoDialog(mainNhanVienView, true);
         themChuHoDialog.setVisible(true);
     }
 

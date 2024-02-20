@@ -5,12 +5,14 @@ import Controller.ChuHoController.DSChuHoController;
 import Controller.PersonalInFoController.DSPersonalInfoController;
 import Model.ChuHo;
 import View.DSChuHoView;
+import View.MainInterFace;
 import View.MainNhanVienView;
 import javax.swing.JOptionPane;
 
 public class ThemChuHoDialog extends javax.swing.JDialog {
-    public ThemChuHoDialog(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    private MainInterFace mainInterFace;
+    public ThemChuHoDialog(MainInterFace observer, boolean modal) {
+        this.mainInterFace = observer;
         initComponents();
         this.setResizable(false);
         this.setTitle("Thêm chủ hộ");
@@ -217,7 +219,8 @@ public class ThemChuHoDialog extends javax.swing.JDialog {
             new DSChuHoController().ThemChuHo(chuHo, UsernameTF.getText(), PassTF.getText(), cccdNVTF.getText());
             JOptionPane.showMessageDialog(this, "Đã thêm tài khoản của chủ hộ có CCCD: " + CccdTF.getText());
             
-            
+            mainInterFace.CapNhatBangTrangThai();
+
             this.dispose();
         }
     }//GEN-LAST:event_okBTActionPerformed
