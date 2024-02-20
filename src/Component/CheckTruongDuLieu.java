@@ -1,6 +1,9 @@
 package Component;
 
 import com.toedter.calendar.JDateChooser;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class CheckTruongDuLieu {
     // Kiểm tra CCCD
@@ -43,6 +46,25 @@ public class CheckTruongDuLieu {
         if (dateChooser.getDate() == null) {
             return false;
         }
-        return true;
-    }
+
+        // Format ngày tháng kiểu yyyy/MM/dd
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+        sdf.setLenient(false); // Không cho phép chuyển đổi mềm dẻo
+
+        try {
+            // Chuyển đổi ngày tháng từ JDateChooser thành kiểu Date
+            Date date = dateChooser.getDate();
+            String dateString = sdf.format(date); // Chuyển thành chuỗi theo định dạng yyyy/MM/dd
+            Date parsedDate = sdf.parse(dateString); // Chuyển chuỗi thành Date
+
+            // Kiểm tra xem chuỗi ngày tháng đã được chuyển đổi đúng định dạng chưa
+            if (!dateString.equals(sdf.format(parsedDate))) {
+                return false; // Định dạng không đúng
+            }
+        } catch (ParseException e) {
+            return false; // Định dạng không đúng
+        }
+
+        return true; // Định dạng đúng
+        }
 }

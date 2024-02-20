@@ -4,13 +4,12 @@ import Component.CheckTruongDuLieu;
 import Controller.ChuHoController.DSChuHoController;
 import View.DSChuHoView;
 import View.MainNhanVienView;
-import java.awt.Frame;
 import javax.swing.JOptionPane;
 
 public class XoaChuHoDialog extends javax.swing.JDialog {
     private MainNhanVienView mainNhanVienView;
     private DSChuHoView dSChuHoView;
-    public XoaChuHoDialog(MainNhanVienView Frame, DSChuHoView FrameChuHoView,boolean modal) {
+    public XoaChuHoDialog(MainNhanVienView Frame, DSChuHoView FrameChuHoView, boolean modal) {
         initComponents();
         this.mainNhanVienView = Frame;
         this.dSChuHoView = FrameChuHoView;
@@ -108,7 +107,7 @@ public class XoaChuHoDialog extends javax.swing.JDialog {
 
                 this.dispose();
             }
-            }
+        }
     }//GEN-LAST:event_okBtnActionPerformed
 
     private void hủyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hủyBtnActionPerformed

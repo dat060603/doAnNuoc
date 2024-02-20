@@ -3,14 +3,53 @@ package View;
 import Controller.ChuHoController.DSChuHoController;
 import LayMotSoUIdepTaiDay.BangDanhSach;
 import Model.ChuHo;
+import View.form.CapNhatChuHo;
 import View.form.ThemChuHoDialog;
 import View.form.XoaChuHoDialog;
+import java.util.Date;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 public class DSChuHoView extends javax.swing.JPanel {
     private String CCCD_ChuHo;
+    private String HoTen;
+    private Date NgaySinh;
+    private String DiaChi;
+    private String Sdt;
+    
+    public String getHoTen() {
+        return HoTen;
+    }
+
+    public void setHoTen(String HoTen) {
+        this.HoTen = HoTen;
+    }
+
+    public Date getNgaySinh() {
+        return NgaySinh;
+    }
+
+    public void setNgaySinh(Date NgaySinh) {
+        this.NgaySinh = NgaySinh;
+    }
+
+    public String getDiaChi() {
+        return DiaChi;
+    }
+
+    public void setDiaChi(String DiaChi) {
+        this.DiaChi = DiaChi;
+    }
+
+    public String getSdt() {
+        return Sdt;
+    }
+
+    public void setSdt(String Sdt) {
+        this.Sdt = Sdt;
+    }
 
     public String getCCCD_ChuHo() {
         return CCCD_ChuHo;
@@ -28,6 +67,7 @@ public class DSChuHoView extends javax.swing.JPanel {
         this.setVisible(true);
         ShowThongTin();
         
+        //Tạo Action khi nhấp chọn hàng trong Jtable BangDSChuHo
         ListSelectionListener rowListener;
         rowListener = new ListSelectionListener() {
             @Override
@@ -35,24 +75,19 @@ public class DSChuHoView extends javax.swing.JPanel {
                 if (!e.getValueIsAdjusting()) {
                     int selectedRow = BangDSChuHo.getSelectedRow();
                     if (selectedRow != -1) { 
-                        Object Ten = BangDSChuHo.getValueAt(selectedRow, 1); // Lấy dữ liệu từ hàng đó
-                        Object CCCD = BangDSChuHo.getValueAt(selectedRow, 0);
-                        // Xử lý dữ liệu
-                        TimKiemTF.setText((String) Ten);
-                        setCCCD_ChuHo((String) CCCD);
+                        // Lấy dữ liệu từ hàng đó và xử lý dữ liệu   
+                        setCCCD_ChuHo((String) BangDSChuHo.getValueAt(selectedRow, 0));
+                        setHoTen((String) BangDSChuHo.getValueAt(selectedRow, 1));
+                        setNgaySinh((Date) BangDSChuHo.getValueAt(selectedRow, 2));
+                        setDiaChi((String) BangDSChuHo.getValueAt(selectedRow, 3));
+                        setSdt((String) BangDSChuHo.getValueAt(selectedRow, 4));
+              
+                        TimKiemTF.setText(getHoTen());
                     }
                 }
             };
         };
         BangDSChuHo.getSelectionModel().addListSelectionListener(rowListener);
-    }
-
-    public BangDanhSach getBangDSChuHo() {
-        return BangDSChuHo;
-    }
-
-    public void setBangDSChuHo(BangDanhSach BangDSChuHo) {
-        this.BangDSChuHo = BangDSChuHo;
     }
 
     public void ShowThongTin(){
@@ -191,7 +226,12 @@ public class DSChuHoView extends javax.swing.JPanel {
 
     private void TimKiemBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TimKiemBTActionPerformed
         String key = TimKiemTF.getText();
-        new Controller.ChuHoController.DSChuHoController().TimKiemChuHo(key, BangDSChuHo);
+        if(key.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Vui lòng không được bỏ trống!");            
+        }else{
+            new Controller.ChuHoController.DSChuHoController().TimKiemChuHo(key, BangDSChuHo); 
+        }
+
     }//GEN-LAST:event_TimKiemBTActionPerformed
 
     private void XoaBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_XoaBTActionPerformed
@@ -199,7 +239,11 @@ public class DSChuHoView extends javax.swing.JPanel {
     }//GEN-LAST:event_XoaBTActionPerformed
 
     private void CapNhatBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CapNhatBTActionPerformed
-        
+        if(!(BangDSChuHo.getSelectionModel().isSelectionEmpty())){
+            showCapNhatChuHoDialog();
+        }else{
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn chủ hộ cần cập nhật trên bảng!!!");
+        }
     }//GEN-LAST:event_CapNhatBTActionPerformed
 
     private void ThemBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ThemBTActionPerformed
@@ -218,6 +262,11 @@ public class DSChuHoView extends javax.swing.JPanel {
     private void showXoaChuHoDialog() {
         XoaChuHoDialog xoaChuHoDialog = new XoaChuHoDialog(mainNhanVienView, this, true);
         xoaChuHoDialog.setVisible(true);
+    }    
+    
+    private void showCapNhatChuHoDialog() {
+        CapNhatChuHo capNhatChuHo = new CapNhatChuHo(mainNhanVienView, this, true);
+        capNhatChuHo.setVisible(true);
     }    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
