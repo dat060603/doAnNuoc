@@ -157,7 +157,7 @@ public class ChuHoDAO {
         }        
     }
     
-    public void CapNhatAccountChuHoDAO(ChuHo chuHo){
+    public void CapNhatAccountChuHoDAO(ChuHo chuHo, String Account, String Password){
         String SQL1 = "UPDATE [dbo].[ACCOUNT]\n" +
                      "SET [Account_Username] = ?,\n" +
                      "[Account_Password] = ?\n" +
@@ -166,8 +166,8 @@ public class ChuHoDAO {
             Connection con = new DBS().getConnection();
             PreparedStatement stmt = con.prepareStatement(SQL1);
             
-            stmt.setString(1, chuHo.getAccount());
-            stmt.setString(2, chuHo.getPassword());
+            stmt.setString(1, Account);
+            stmt.setString(2, Password);
             stmt.setString(3, chuHo.getCCCD());
 
             int affectedRows = stmt.executeUpdate();

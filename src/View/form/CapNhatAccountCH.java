@@ -113,7 +113,10 @@ public class CapNhatAccountCH extends javax.swing.JDialog {
         // Kiểm tra Text field có bị trống không
         if(AccountTF.getText().isEmpty() || PassTF.getText().isEmpty() || ConfirmPassTF.getText().isEmpty()){
             JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin!");
-        }else {  
+        }else if(!(PassTF.getText().equals(ConfirmPassTF.getText()))){
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập thông tin hợp lệ!");
+        }
+        else {  
             int confirm = JOptionPane.showConfirmDialog(
                 this,
                 "Bạn có chắc muốn cập nhật Account chủ hộ có CCCD: " + dSChuHoView.getChuHo().getCCCD() + " không?",
@@ -125,7 +128,7 @@ public class CapNhatAccountCH extends javax.swing.JDialog {
 
                 JOptionPane.showMessageDialog(this, "Đã cập nhật thông tin Account của chủ hộ có CCCD: " + dSChuHoView.getChuHo().getCCCD());
                 
-                new DSChuHoController().CapNhatAccountChuHo(dSChuHoView.getChuHo());
+                new DSChuHoController().CapNhatAccountChuHo(dSChuHoView.getChuHo(), AccountTF.getText(), PassTF.getText());
                 
                 mainNhanVienView.setForm(new DSChuHoView(mainNhanVienView));
                 

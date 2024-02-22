@@ -97,8 +97,8 @@ public class DSChuHoController {
         new ChuHoDAO().CapNhatThongTinChuHoDAO(chuHo);
     }
   
-    public void CapNhatAccountChuHo(ChuHo chuHo){
-        new ChuHoDAO().CapNhatAccountChuHoDAO(chuHo);
+    public void CapNhatAccountChuHo(ChuHo chuHo, String Account, String Password){
+        new ChuHoDAO().CapNhatAccountChuHoDAO(chuHo, Account, Password);
     }    
     
     public void CapNhatCCCDChuHo(ChuHo chuHo, String CCCD_Moi){
