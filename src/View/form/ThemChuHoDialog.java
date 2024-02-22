@@ -208,14 +208,22 @@ public class ThemChuHoDialog extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "CCCD đã tồn tại! Có thể đã nằm trên hệ thống và chỉ được ẩn đi!");
         } 
         else {    
-            ChuHo chuHo;
-            chuHo = new ChuHo(CccdTF.getText(), HoTenTF.getText(), DiaChiTF.getText(), SdtTF.getText(), new java.sql.Date(DobDC.getDate().getTime()));
-            new DSChuHoController().ThemChuHo(chuHo, UsernameTF.getText(), PassTF.getText(), cccdNVTF.getText());
-            JOptionPane.showMessageDialog(this, "Đã thêm tài khoản của chủ hộ có CCCD: " + CccdTF.getText());
+            int confirm = JOptionPane.showConfirmDialog(
+                this,
+                "Bạn có chắc muốn thêm chủ hộ với CCCD: " + CccdTF.getText() + " không?",
+            "Xác nhận thêm",
+            JOptionPane.YES_NO_OPTION
+            );
+            if (confirm == JOptionPane.YES_OPTION) {
+                ChuHo chuHo;
+                chuHo = new ChuHo(CccdTF.getText(), HoTenTF.getText(), DiaChiTF.getText(), SdtTF.getText(), new java.sql.Date(DobDC.getDate().getTime()));
+                new DSChuHoController().ThemChuHo(chuHo, UsernameTF.getText(), PassTF.getText(), cccdNVTF.getText());
+                JOptionPane.showMessageDialog(this, "Đã thêm tài khoản của chủ hộ có CCCD: " + CccdTF.getText());
             
-            mainNhanVienView.CapNhatBangTrangThai();
-            mainNhanVienView.setForm(new DSChuHoView(mainNhanVienView));
-           
+                mainNhanVienView.CapNhatBangTrangThai();
+                mainNhanVienView.setForm(new DSChuHoView(mainNhanVienView));
+                this.dispose();
+            }       
             this.dispose();
         }
     }//GEN-LAST:event_okBTActionPerformed
