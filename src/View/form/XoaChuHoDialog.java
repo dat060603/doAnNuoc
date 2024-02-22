@@ -18,7 +18,10 @@ public class XoaChuHoDialog extends javax.swing.JDialog {
         this.setTitle("Xóa chủ hộ");
         this.setModalityType(DEFAULT_MODALITY_TYPE.APPLICATION_MODAL);
         this.setLocationRelativeTo(null);
-        cccdTf.setText(dSChuHoView.getChuHo().getCCCD());
+        
+        if(dSChuHoView.getChuHo() != null){
+            cccdTf.setText(dSChuHoView.getChuHo().getCCCD());
+        }  
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
