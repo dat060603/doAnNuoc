@@ -254,6 +254,7 @@ public final class MainNhanVienView extends javax.swing.JFrame {
             button3.Reset();
             HoaDonBT.Reset();
             this.setForm(new DSChuHoView(this));
+            CapNhatBangTrangThai();
     }//GEN-LAST:event_DSChuHoActionPerformed
 
     private void ThongTinSDDienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ThongTinSDDienActionPerformed
@@ -262,6 +263,7 @@ public final class MainNhanVienView extends javax.swing.JFrame {
             button3.Reset();
             HoaDonBT.Reset();
             this.setForm(new ThongTinSDDienView());
+            CapNhatBangTrangThai();
     }//GEN-LAST:event_ThongTinSDDienActionPerformed
 
     private void button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button3ActionPerformed
@@ -269,6 +271,7 @@ public final class MainNhanVienView extends javax.swing.JFrame {
             ThongTinSDDien.Reset();
             button3.Nhan();
             HoaDonBT.Reset();
+            CapNhatBangTrangThai();
     }//GEN-LAST:event_button3ActionPerformed
 
     private void HoaDonBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HoaDonBTActionPerformed
@@ -277,6 +280,7 @@ public final class MainNhanVienView extends javax.swing.JFrame {
             button3.Reset();
             HoaDonBT.Nhan();
             this.setForm(new DSHoaDonView());
+            CapNhatBangTrangThai();
     }//GEN-LAST:event_HoaDonBTActionPerformed
 
     private void button4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button4ActionPerformed

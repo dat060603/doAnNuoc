@@ -1,5 +1,9 @@
 package Component;
 
+import Controller.ChuHoController.DSChuHoController;
+import Controller.PersonalInFoController.DSPersonalInfoController;
+import Model.ChuHo;
+import Model.Personalinfo;
 import com.toedter.calendar.JDateChooser;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -67,4 +71,13 @@ public class CheckTruongDuLieu {
 
         return true; // Định dạng đúng
         }
+    
+    public boolean KtraCCCDTonTai(String CCCD){
+        for(Personalinfo personalinfo : new DSPersonalInfoController().getDsPerson()){
+            if(personalinfo.getCCCD().equals(CCCD)){
+                return true;
+            }
+        }
+        return false;
+    }
 }

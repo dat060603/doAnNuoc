@@ -7,7 +7,35 @@ public class ChuHo {
     private String Address;
     private String Phone;
     private Date DOB;
+    private String Account;
+    private String Password;
 
+    public ChuHo(String CCCD, String Username, String Address, String Phone, Date DOB, String Account, String Password) {
+        this.CCCD = CCCD;
+        this.Username = Username;
+        this.Address = Address;
+        this.Phone = Phone;
+        this.DOB = DOB;
+        this.Account = Account;
+        this.Password = Password;
+    }
+
+    public String getAccount() {
+        return Account;
+    }
+
+    public void setAccount(String Account) {
+        this.Account = Account;
+    }
+
+    public String getPassword() {
+        return Password;
+    }
+
+    public void setPassword(String Password) {
+        this.Password = Password;
+    }
+    
     public String getCCCD() {
         return CCCD;
     }

@@ -3,7 +3,9 @@ package View;
 import Controller.ChuHoController.DSChuHoController;
 import LayMotSoUIdepTaiDay.BangDanhSach;
 import Model.ChuHo;
-import View.form.CapNhatChuHo;
+import View.form.CapNhatAccountCH;
+import View.form.CapNhatCCCDCH;
+import View.form.CapNhatThongTinCH;
 import View.form.ThemChuHoDialog;
 import View.form.XoaChuHoDialog;
 import java.util.Date;
@@ -13,60 +15,24 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 public class DSChuHoView extends javax.swing.JPanel {
-    private String CCCD_ChuHo;
-    private String HoTen;
-    private Date NgaySinh;
-    private String DiaChi;
-    private String Sdt;
-    
-    public String getHoTen() {
-        return HoTen;
+    private ChuHo chuHo;
+
+    public ChuHo getChuHo() {
+        return chuHo;
     }
 
-    public void setHoTen(String HoTen) {
-        this.HoTen = HoTen;
+    public void setChuHo(ChuHo chuHo) {
+        this.chuHo = chuHo;
     }
-
-    public Date getNgaySinh() {
-        return NgaySinh;
-    }
-
-    public void setNgaySinh(Date NgaySinh) {
-        this.NgaySinh = NgaySinh;
-    }
-
-    public String getDiaChi() {
-        return DiaChi;
-    }
-
-    public void setDiaChi(String DiaChi) {
-        this.DiaChi = DiaChi;
-    }
-
-    public String getSdt() {
-        return Sdt;
-    }
-
-    public void setSdt(String Sdt) {
-        this.Sdt = Sdt;
-    }
-
-    public String getCCCD_ChuHo() {
-        return CCCD_ChuHo;
-    }
-
-    public void setCCCD_ChuHo(String CCCD_ChuHo) {
-        this.CCCD_ChuHo = CCCD_ChuHo;
-    }
-    
+       
     private MainNhanVienView mainNhanVienView = new MainNhanVienView();
     public DSChuHoView(MainNhanVienView mnv) {
         initComponents();
         this.mainNhanVienView = mnv;
         this.setSize(mainNhanVienView.getMainPanel().getSize());
         this.setVisible(true);
-        ShowThongTin();
-        
+        ShowThongTinTuDBS();
+        CapNhatCombobox.setEnabled(false);
         //Tạo Action khi nhấp chọn hàng trong Jtable BangDSChuHo
         ListSelectionListener rowListener;
         rowListener = new ListSelectionListener() {
@@ -76,13 +42,9 @@ public class DSChuHoView extends javax.swing.JPanel {
                     int selectedRow = BangDSChuHo.getSelectedRow();
                     if (selectedRow != -1) { 
                         // Lấy dữ liệu từ hàng đó và xử lý dữ liệu   
-                        setCCCD_ChuHo((String) BangDSChuHo.getValueAt(selectedRow, 0));
-                        setHoTen((String) BangDSChuHo.getValueAt(selectedRow, 1));
-                        setNgaySinh((Date) BangDSChuHo.getValueAt(selectedRow, 2));
-                        setDiaChi((String) BangDSChuHo.getValueAt(selectedRow, 3));
-                        setSdt((String) BangDSChuHo.getValueAt(selectedRow, 4));
-              
-                        TimKiemTF.setText(getHoTen());
+                        CapNhatCombobox.setEnabled(true);
+                        setChuHo(new DSChuHoController().LayThongTinChuHoQuaCCCD((String) BangDSChuHo.getValueAt(selectedRow, 0)));              
+                        TimKiemTF.setText(chuHo.getUsername());
                     }
                 }
             };
@@ -90,12 +52,12 @@ public class DSChuHoView extends javax.swing.JPanel {
         BangDSChuHo.getSelectionModel().addListSelectionListener(rowListener);
     }
 
-    public void ShowThongTin(){
+    public void ShowThongTinTuDBS(){
         List<ChuHo> dsChuHO = new DSChuHoController().getDsChuHo();
         DefaultTableModel model = (DefaultTableModel) BangDSChuHo.getModel();
         int i = 0;
         for(ChuHo chuHo : dsChuHO){
-            Object[] rowData = {chuHo.getCCCD(),chuHo.getUsername(), chuHo.getDOB(), chuHo.getAddress(), chuHo.getPhone()};
+            Object[] rowData = {chuHo.getCCCD(),chuHo.getUsername(), chuHo.getDOB(), chuHo.getAddress(), chuHo.getPhone(), chuHo.getAccount(), chuHo.getPassword()};
             model.insertRow(i++,rowData);   
         }
         model.fireTableDataChanged();
@@ -113,6 +75,7 @@ public class DSChuHoView extends javax.swing.JPanel {
         XoaBT = new LayMotSoUIdepTaiDay.ButtonThuong();
         CapNhatBT = new LayMotSoUIdepTaiDay.ButtonThuong();
         LamMoiBT = new LayMotSoUIdepTaiDay.ButtonThuong();
+        CapNhatCombobox = new LayMotSoUIdepTaiDay.ComboboxThuong();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -129,20 +92,20 @@ public class DSChuHoView extends javax.swing.JPanel {
 
         BangDSChuHo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "CCCD", "Họ và tên", "Ngày sinh", "Địa chỉ", "SĐT"
+                "CCCD", "Họ và tên", "Ngày sinh", "Địa chỉ", "SĐT", "Account", "Password"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -187,6 +150,14 @@ public class DSChuHoView extends javax.swing.JPanel {
             }
         });
 
+        CapNhatCombobox.setForeground(new java.awt.Color(0, 0, 0));
+        CapNhatCombobox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cập nhật thông tin", "Cập nhật Account", "Cập nhật CCCD" }));
+        CapNhatCombobox.setSelectedItem(null
+        );
+        CapNhatCombobox.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        CapNhatCombobox.setLabeText("(Chọn loại cập nhật)");
+        CapNhatCombobox.setLineColor(new java.awt.Color(0, 153, 255));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -194,18 +165,21 @@ public class DSChuHoView extends javax.swing.JPanel {
             .addComponent(ScrollPane)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(TimKiemTF, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(TimKiemBT, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(ThemBT, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(XoaBT, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(LamMoiBT, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                    .addComponent(CapNhatBT, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(TimKiemTF, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(TimKiemBT, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(ThemBT, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(XoaBT, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CapNhatCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LamMoiBT, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CapNhatBT, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -216,11 +190,13 @@ public class DSChuHoView extends javax.swing.JPanel {
                     .addComponent(ThemBT, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(XoaBT, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TimKiemBT, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CapNhatBT, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(LamMoiBT, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(LamMoiBT, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CapNhatCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CapNhatBT, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(48, 48, 48)
-                .addComponent(ScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE))
+                .addComponent(ScrollPane))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -239,10 +215,17 @@ public class DSChuHoView extends javax.swing.JPanel {
     }//GEN-LAST:event_XoaBTActionPerformed
 
     private void CapNhatBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CapNhatBTActionPerformed
-        if(!(BangDSChuHo.getSelectionModel().isSelectionEmpty())){
-            showCapNhatChuHoDialog();
+        Object selected = CapNhatCombobox.getSelectedItem();
+        if(!(BangDSChuHo.getSelectionModel().isSelectionEmpty()) && (selected != null)){          
+            if(selected.equals("Cập nhật thông tin")){
+                showCapNhatThongTinCHDialog();
+            }else if(selected.equals("Cập nhật Account")){
+                showCapNhatAccountCHDialog();
+            }else if(selected.equals("Cập nhật CCCD")){
+                showCapNhatCCCDCHDialog();
+            }                       
         }else{
-            JOptionPane.showMessageDialog(this, "Vui lòng chọn chủ hộ cần cập nhật trên bảng!!!");
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn chủ hộ cần cập nhật và loại cập nhật trên bảng!!!");
         }
     }//GEN-LAST:event_CapNhatBTActionPerformed
 
@@ -264,14 +247,25 @@ public class DSChuHoView extends javax.swing.JPanel {
         xoaChuHoDialog.setVisible(true);
     }    
     
-    private void showCapNhatChuHoDialog() {
-        CapNhatChuHo capNhatChuHo = new CapNhatChuHo(mainNhanVienView, this, true);
+    private void showCapNhatThongTinCHDialog() {
+        CapNhatThongTinCH capNhatChuHo = new CapNhatThongTinCH(mainNhanVienView, this, true);
         capNhatChuHo.setVisible(true);
     }    
+    
+    private void showCapNhatAccountCHDialog() {
+        CapNhatAccountCH capNhatChuHo = new CapNhatAccountCH(mainNhanVienView, this, true);
+        capNhatChuHo.setVisible(true);
+    }    
+    
+    private void showCapNhatCCCDCHDialog() {
+        CapNhatCCCDCH capNhatChuHo = new CapNhatCCCDCH(mainNhanVienView, this, true);
+        capNhatChuHo.setVisible(true);
+    }  
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private LayMotSoUIdepTaiDay.BangDanhSach BangDSChuHo;
     private LayMotSoUIdepTaiDay.ButtonThuong CapNhatBT;
+    private LayMotSoUIdepTaiDay.ComboboxThuong CapNhatCombobox;
     private LayMotSoUIdepTaiDay.ButtonThuong LamMoiBT;
     private javax.swing.JScrollPane ScrollPane;
     private LayMotSoUIdepTaiDay.ButtonThuong ThemBT;

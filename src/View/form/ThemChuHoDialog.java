@@ -204,7 +204,7 @@ public class ThemChuHoDialog extends javax.swing.JDialog {
         else if(!(CheckTruongDuLieu.KtraCCCD(CccdTF.getText()) && CheckTruongDuLieu.KtraCCCD(cccdNVTF.getText()) && CheckTruongDuLieu.KtraSDT(SdtTF.getText()) && CheckTruongDuLieu.KtraDate(DobDC))){
             JOptionPane.showMessageDialog(this, "Vui lòng xem lại và nhập thông tin hợp lệ!");
         }
-        else if(!(new DSPersonalInfoController().CheckTonTaiCCCD(CccdTF.getText()) || new DSPersonalInfoController().CheckTonTaiCCCD(cccdNVTF.getText()))){
+        else if(new CheckTruongDuLieu().KtraCCCDTonTai(CccdTF.getText())){
             JOptionPane.showMessageDialog(this, "CCCD đã tồn tại! Có thể đã nằm trên hệ thống và chỉ được ẩn đi!");
         } 
         else {    

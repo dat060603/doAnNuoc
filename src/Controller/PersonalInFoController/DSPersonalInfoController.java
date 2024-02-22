@@ -22,13 +22,5 @@ public class DSPersonalInfoController {
 
     public void setDsPerson(List<Personalinfo> dsPerson) {
         this.dsPerson = dsPerson;
-    }
-    
-    public boolean CheckTonTaiCCCD(String CCCD){
-        for(Personalinfo ps : dsPerson){
-            if(ps.getCCCD().equals(CCCD))
-                return false;
-        }
-        return true;
-    }
+    }   
 }

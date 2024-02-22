@@ -65,6 +65,15 @@ public class DSChuHoController {
         }
     }
     
+    public ChuHo LayThongTinChuHoQuaCCCD(String CCCD){
+        for(ChuHo chuHo : dsChuHo){
+            if(chuHo.getCCCD().equals(CCCD)){
+                return chuHo;
+            }
+        }
+        return null;
+    }
+    
     public void ThemChuHo (ChuHo chuHo, String Username, String Pass, String CCCD_NV){
         dsChuHo.add(chuHo);
 
@@ -83,14 +92,16 @@ public class DSChuHoController {
     public int SoluongChuho(){
         return dsChuHo.size();
     }
-    
-    public boolean checkTonTaiChuHo(String CCCD_ChuHo){
-        for(ChuHo chuHo : dsChuHo){
-            if(chuHo.getCCCD().equals(CCCD_ChuHo)){
-                return true;
-            }
-        }
-        return false;
+      
+    public void CapNhatThongTinChuHo(ChuHo chuHo){
+        new ChuHoDAO().CapNhatThongTinChuHoDAO(chuHo);
     }
+  
+    public void CapNhatAccountChuHo(ChuHo chuHo){
+        new ChuHoDAO().CapNhatAccountChuHoDAO(chuHo);
+    }    
     
+    public void CapNhatCCCDChuHo(ChuHo chuHo, String CCCD_Moi){
+        new ChuHoDAO().CapNhatCCCDChuHoDAO(chuHo, CCCD_Moi);
+    }
 }

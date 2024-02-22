@@ -18,7 +18,7 @@ public class XoaChuHoDialog extends javax.swing.JDialog {
         this.setTitle("Xóa chủ hộ");
         this.setModalityType(DEFAULT_MODALITY_TYPE.APPLICATION_MODAL);
         this.setLocationRelativeTo(null);
-        cccdTf.setText(dSChuHoView.getCCCD_ChuHo());
+        cccdTf.setText(dSChuHoView.getChuHo().getCCCD());
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -88,7 +88,7 @@ public class XoaChuHoDialog extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Vui lòng không được bỏ trống");
         }else if(!(CheckTruongDuLieu.KtraCCCD(cccdTf.getText()))){
             JOptionPane.showMessageDialog(this, "Vui lòng nhập đúng CCCD (phải là các chữ số có đủ 12 ký tự)");
-        }else if(!(new DSChuHoController().checkTonTaiChuHo(cccdTf.getText()))){
+        }else if(!(new CheckTruongDuLieu().KtraCCCDTonTai(cccdTf.getText()))){
             JOptionPane.showMessageDialog(this, "Chủ hộ có CCCD: " + cccdTf.getText() + " không tồn tại!");
         }else{
             int confirm = JOptionPane.showConfirmDialog(

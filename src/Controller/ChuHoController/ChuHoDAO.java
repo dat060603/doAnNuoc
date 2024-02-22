@@ -18,7 +18,7 @@ public class ChuHoDAO {
     
     public List<ChuHo> getAll() throws Exception{
         Lammoi();
-        String SQL = "SELECT P.CCCD, P.Username, P.DOB, P.Address, P.Phone\n" +
+        String SQL = "SELECT P.CCCD, P.Username, P.DOB, P.Address, P.Phone, A.Account_Username, A.Account_Password\n" +
                      "FROM [dbo].[PERSON_INFO] AS P\n" +
                      "JOIN [dbo].[ACCOUNT] AS A\n" +
                      "ON P.CCCD = A.CCCD\n" +
@@ -35,6 +35,8 @@ public class ChuHoDAO {
                 chuHo.setAddress(rs.getString("Address"));
                 chuHo.setPhone(rs.getString("Phone"));
                 chuHo.setDOB(rs.getDate("DOB"));
+                chuHo.setAccount(rs.getString("Account_Username"));
+                chuHo.setPassword(rs.getString("Account_Password"));
                 
                 lstChuHo.add(chuHo);
             }
@@ -124,6 +126,83 @@ public class ChuHoDAO {
         } catch (Exception ex) {
             Logger.getLogger(ChuHoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public void CapNhatThongTinChuHoDAO(ChuHo chuHo){
+        String SQL = "UPDATE [dbo].[PERSON_INFO]\n" +
+                     "SET Username = ?,\n" +
+                     "DOB = ?,\n" +
+                     "Address = ?,\n" +
+                     "Phone = ?\n" +
+                     "WHERE [CCCD] = ?";
+        try {
+            Connection con = new DBS().getConnection();
+            PreparedStatement stmt = con.prepareStatement(SQL);
+            
+            stmt.setString(1, chuHo.getUsername());
+            stmt.setDate(2, chuHo.getDOB());
+            stmt.setString(3, chuHo.getAddress());
+            stmt.setString(4, chuHo.getPhone());
+            stmt.setString(5, chuHo.getCCCD());
+
+            int affectedRows = stmt.executeUpdate();
+        
+            if (affectedRows > 0) {
+                System.out.println("Thông báo hệ thống đã cập nhật chủ hộ có CCCD: " + chuHo.getCCCD() + " thành công!");
+            } else {
+                System.out.println("cập nhật chủ hộ có CCCD: " + chuHo.getCCCD() + " trên hệ thống thất bại!!!");
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(ChuHoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }        
+    }
+    
+    public void CapNhatAccountChuHoDAO(ChuHo chuHo){
+        String SQL1 = "UPDATE [dbo].[ACCOUNT]\n" +
+                     "SET [Account_Username] = ?,\n" +
+                     "[Account_Password] = ?\n" +
+                     "WHERE [CCCD] = ?";
+        try {
+            Connection con = new DBS().getConnection();
+            PreparedStatement stmt = con.prepareStatement(SQL1);
+            
+            stmt.setString(1, chuHo.getAccount());
+            stmt.setString(2, chuHo.getPassword());
+            stmt.setString(3, chuHo.getCCCD());
+
+            int affectedRows = stmt.executeUpdate();
+        
+            if (affectedRows > 0) {
+                System.out.println("Thông báo hệ thống đã cập nhật Account chủ hộ có CCCD: " + chuHo.getCCCD() + " thành công!");
+            } else {
+                System.out.println("Cập nhật Account chủ hộ có CCCD: " + chuHo.getCCCD() + " trên hệ thống thất bại!!!");
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(ChuHoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }        
+    }
+    
+    public void CapNhatCCCDChuHoDAO(ChuHo chuHo, String CCCD_Moi){
+        String SQL = "UPDATE [dbo].[PERSON_INFO]\n" +
+                     "SET [CCCD] = ?\n" +
+                     "WHERE [CCCD] = ?";
+        try {
+            Connection con = new DBS().getConnection();
+            PreparedStatement stmt = con.prepareStatement(SQL);
+            
+            stmt.setString(1, CCCD_Moi);
+            stmt.setString(2, chuHo.getCCCD());
+
+            int affectedRows = stmt.executeUpdate();
+        
+            if (affectedRows > 0) {
+                System.out.println("Thông báo hệ thống đã cập nhật thành công CCCD chủ hộ có tên: " + chuHo.getUsername());
+            } else {
+                System.out.println("Cập nhật CCCD chủ hộ có tên: " + chuHo.getUsername() + " trên hệ thống thất bại!!!");
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(ChuHoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }    
     }
     
 }
