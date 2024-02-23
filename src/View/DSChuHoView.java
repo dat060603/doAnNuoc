@@ -40,10 +40,11 @@ public class DSChuHoView extends javax.swing.JPanel {
             public void valueChanged(ListSelectionEvent e) {
                 if (!e.getValueIsAdjusting()) {
                     int selectedRow = BangDSChuHo.getSelectedRow();
-                    if (selectedRow != -1) { 
+                    ChuHo chuHo = new DSChuHoController().LayThongTinChuHoQuaCCCD((String) BangDSChuHo.getValueAt(selectedRow, 0));
+                    if (selectedRow != -1 && chuHo != null) { 
                         // Lấy dữ liệu từ hàng đó và xử lý dữ liệu   
                         CapNhatCombobox.setEnabled(true);
-                        setChuHo(new DSChuHoController().LayThongTinChuHoQuaCCCD((String) BangDSChuHo.getValueAt(selectedRow, 0)));              
+                        setChuHo(chuHo);              
                         TimKiemTF.setText(chuHo.getUsername());
                     }
                 }
