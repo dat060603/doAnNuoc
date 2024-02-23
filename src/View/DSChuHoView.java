@@ -117,6 +117,7 @@ public class DSChuHoView extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        BangDSChuHo.getTableHeader().setReorderingAllowed(false);
         ScrollPane.setViewportView(BangDSChuHo);
 
         ThemBT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Isert_icon.png"))); // NOI18N

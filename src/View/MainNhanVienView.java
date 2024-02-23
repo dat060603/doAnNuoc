@@ -102,7 +102,7 @@ public final class MainNhanVienView extends javax.swing.JFrame {
             }
         });
 
-        ThongTinSDDien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/6.png"))); // NOI18N
+        ThongTinSDDien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/9.png"))); // NOI18N
         ThongTinSDDien.setText("Thông tin sử dụng điện");
         ThongTinSDDien.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         ThongTinSDDien.addActionListener(new java.awt.event.ActionListener() {
@@ -111,7 +111,7 @@ public final class MainNhanVienView extends javax.swing.JFrame {
             }
         });
 
-        button3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/9.png"))); // NOI18N
+        button3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/8.png"))); // NOI18N
         button3.setText("Danh sách nhân viên ");
         button3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         button3.addActionListener(new java.awt.event.ActionListener() {
@@ -167,7 +167,7 @@ public final class MainNhanVienView extends javax.swing.JFrame {
                 .addComponent(LogoApp)
                 .addGap(62, 62, 62)
                 .addComponent(DSChuHo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(button3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ThongTinSDDien, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -175,7 +175,7 @@ public final class MainNhanVienView extends javax.swing.JFrame {
                 .addComponent(HoaDonBT, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(button4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(277, Short.MAX_VALUE))
+                .addContainerGap(283, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout MainPanelLayout = new javax.swing.GroupLayout(MainPanel);
