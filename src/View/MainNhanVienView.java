@@ -1,12 +1,13 @@
 package View;
 
 //import View.NhanVienView.ThongTinSDDienView;
+import View.ThongTinSuDungDien.ThongTinSDDienView;
 import Controller.ChuHoController.DSChuHoController;
 import Controller.InvoicesController.InvoiceController;
 import Controller.StaffsController.DSStaffsController;
 import LayMotSoUIdepTaiDay.ButtonMenu;
-import View.DSChuHoView;
-import View.form.ThemChuHoDialog;
+import View.DanhSachChuHo.DSChuHoView;
+import View.DanhSachChuHo.DSChuHoForm.ThemChuHoDialog;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Image;
@@ -262,7 +263,7 @@ public final class MainNhanVienView extends javax.swing.JFrame {
             ThongTinSDDien.Nhan();
             button3.Reset();
             HoaDonBT.Reset();
-            this.setForm(new ThongTinSDDienView());
+            this.setForm(new ThongTinSDDienView(this));
             CapNhatBangTrangThai();
     }//GEN-LAST:event_ThongTinSDDienActionPerformed
 

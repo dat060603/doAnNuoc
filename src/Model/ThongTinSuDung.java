@@ -7,20 +7,20 @@ public class ThongTinSuDung {
     private String ID_E_Meter;
     private String Type_living;
     private String DiaChi;  
-    private String CCCD_Admin;
-    private String Username_Admin;
-    private String Phone_Admin;
+    private String CCCD_NhanVien;
+    private String Username_NhanVien;
+    private String Phone_NhanVien;
 
-    public ThongTinSuDung(String CCCD, String Username, String Phone, String ID_E_Meter, String Type_living, String DiaChi, String CCCD_Admin, String Username_Admin, String Phone_Admin) {
+    public ThongTinSuDung(String CCCD, String Username, String Phone, String ID_E_Meter, String Type_living, String DiaChi, String CCCD_NhanVien, String Username_NhanVien, String Phone_NhanVien) {
         this.CCCD = CCCD;
         this.Username = Username;
         this.Phone = Phone;
         this.ID_E_Meter = ID_E_Meter;
         this.Type_living = Type_living;
         this.DiaChi = DiaChi;
-        this.CCCD_Admin = CCCD_Admin;
-        this.Username_Admin = Username_Admin;
-        this.Phone_Admin = Phone_Admin;
+        this.CCCD_NhanVien = CCCD_NhanVien;
+        this.Username_NhanVien = Username_NhanVien;
+        this.Phone_NhanVien = Phone_NhanVien;
     }
 
     public String getCCCD() {
@@ -71,29 +71,31 @@ public class ThongTinSuDung {
         this.DiaChi = DiaChi;
     }
 
-    public String getCCCD_Admin() {
-        return CCCD_Admin;
+    public String getCCCD_NhanVien() {
+        return CCCD_NhanVien;
     }
 
-    public void setCCCD_Admin(String CCCD_Admin) {
-        this.CCCD_Admin = CCCD_Admin;
+    public void setCCCD_NhanVien(String CCCD_NhanVien) {
+        this.CCCD_NhanVien = CCCD_NhanVien;
     }
 
-    public String getUsername_Admin() {
-        return Username_Admin;
+    public String getUsername_NhanVien() {
+        return Username_NhanVien;
     }
 
-    public void setUsername_Admin(String Username_Admin) {
-        this.Username_Admin = Username_Admin;
+    public void setUsername_NhanVien(String Username_NhanVien) {
+        this.Username_NhanVien = Username_NhanVien;
     }
 
-    public String getPhone_Admin() {
-        return Phone_Admin;
+    public String getPhone_NhanVien() {
+        return Phone_NhanVien;
     }
 
-    public void setPhone_Admin(String Phone_Admin) {
-        this.Phone_Admin = Phone_Admin;
+    public void setPhone_NhanVien(String Phone_NhanVien) {
+        this.Phone_NhanVien = Phone_NhanVien;
     }
+
+    
 
     public ThongTinSuDung() {};
     
