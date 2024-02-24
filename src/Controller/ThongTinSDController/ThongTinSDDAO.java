@@ -3,10 +3,13 @@ package Controller.ThongTinSDController;
 import Database.DBS;
 import Model.ThongTinSuDung;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ThongTinSDDAO {
     private List<ThongTinSuDung>lstThongTinSD = new ArrayList<>();
@@ -60,5 +63,35 @@ public class ThongTinSDDAO {
 
     public void setLstThongTinSD(List<ThongTinSuDung> lstThongTinSD) {
         this.lstThongTinSD = lstThongTinSD;
+    }
+    
+    public void ThemThongTinSDDienDAO (String CCCD, String ID, String TypeLiving, String DiaChi){
+
+            String SQL = "INSERT INTO [dbo].[E_METER] ([ID_E_METER], [ID_Chuho], [Type_Living], [DiaChi])\n" +
+                    "SELECT ?, C.ID_Chuho, ?, ?\n" +
+                    "FROM [dbo].[CHUHO] AS C\n" +
+                    "WHERE C.CCCD = ?";
+            
+            try {   
+                Connection con = new DBS().getConnection();
+                PreparedStatement stmt = con.prepareStatement(SQL);
+    
+                stmt.setString(1, ID);
+                stmt.setString(2, TypeLiving);
+                stmt.setString(3, DiaChi);
+                stmt.setString(4, CCCD);
+    
+                int rowsAffected = stmt.executeUpdate(); 
+    
+                if(rowsAffected > 0){
+                    System.out.println("Đã thêm công tơ điện cho chủ hộ có CCCD: " + CCCD + " !");
+                } else {
+                    System.out.println("Thêm công tơ điện cho chủ hộ có CCCD: " + CCCD + " thất bại!");
+            }
+    
+            } catch (Exception ex) {
+                Logger.getLogger(ThongTinSDDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
     }
 }

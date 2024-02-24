@@ -2,8 +2,10 @@ package Component;
 
 import Controller.ChuHoController.DSChuHoController;
 import Controller.PersonalInFoController.DSPersonalInfoController;
+import Controller.ThongTinSDController.DSThongTinSDController;
 import Model.ChuHo;
 import Model.Personalinfo;
+import Model.ThongTinSuDung;
 import com.toedter.calendar.JDateChooser;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -79,5 +81,20 @@ public class CheckTruongDuLieu {
             }
         }
         return false;
+    }
+    
+    public boolean KtraIDCongTo(String ID){
+        if (ID.length() != 8 || !ID.matches("[0-9]+"))
+            return false;        
+        return true;       
+    }
+    
+    public boolean KtraTonTaiIDCongTo(String ID){
+        for(ThongTinSuDung thongTinSuDung : new DSThongTinSDController().getLstThongTinSuDungs()){
+            String idE_Meter = thongTinSuDung.getID_E_Meter();
+            if(idE_Meter != null && idE_Meter.equals(ID))
+                return false;            
+        }
+        return true;
     }
 }

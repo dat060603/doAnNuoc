@@ -5,6 +5,7 @@ import Controller.ThongTinSDController.DSThongTinSDController;
 import Model.ChuHo;
 import Model.ThongTinSuDung;
 import View.MainNhanVienView;
+import View.ThongTinSuDungDien.ThongTinSDDienForm.ThemCongToDien;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
@@ -222,7 +223,7 @@ public class ThongTinSDDienView extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ThemCTDienBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ThemCTDienBTActionPerformed
-        
+        showThemConToDienDialog();
     }//GEN-LAST:event_ThemCTDienBTActionPerformed
 
     private void TimKiemBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TimKiemBTActionPerformed
@@ -258,6 +259,10 @@ public class ThongTinSDDienView extends javax.swing.JPanel {
         DaNhapCTDCB.setEnabled(false);
     }//GEN-LAST:event_DaNhapCTDCBActionPerformed
 
+    private void showThemConToDienDialog() {
+        ThemCongToDien themCongToDien = new ThemCongToDien(mainNhanVienView, this, true);
+        themCongToDien.setVisible(true);
+    }  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private LayMotSoUIdepTaiDay.BangDanhSach BangDSThongTinSD;

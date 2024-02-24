@@ -56,4 +56,8 @@ public class DSThongTinSDController {
         }
         return null;
     }
+    
+    public void ThemCongToDien(String CCCD, String ID, String TypeLiving, String DiaChi){
+        new ThongTinSDDAO().ThemThongTinSDDienDAO(CCCD, ID, TypeLiving, DiaChi);
+    }
 }
