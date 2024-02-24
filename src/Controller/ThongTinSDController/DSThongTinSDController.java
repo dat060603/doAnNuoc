@@ -1,5 +1,6 @@
 package Controller.ThongTinSDController;
 
+import LayMotSoUIdepTaiDay.BangDanhSach;
 import Model.ThongTinSuDung;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class DSThongTinSDController {
-     private List<ThongTinSuDung> lstThongTinSuDungs;
+    private List<ThongTinSuDung> lstThongTinSuDungs;
 
     public DSThongTinSDController() {
          try {
@@ -23,5 +24,36 @@ public class DSThongTinSDController {
 
     public void setLstThongTinSuDungs(List<ThongTinSuDung> lstThongTinSuDungs) {
         this.lstThongTinSuDungs = lstThongTinSuDungs;
+    }
+    
+    public List<ThongTinSuDung> HienThiChuaNhap(BangDanhSach tableBangDanhSach){
+        tableBangDanhSach.removeAll();
+        List<ThongTinSuDung> lstChuaNhap = new ArrayList<>();
+        for(ThongTinSuDung thongTinSuDung : lstThongTinSuDungs){
+            if(thongTinSuDung.getID_E_Meter() == null){
+                lstChuaNhap.add(thongTinSuDung);
+            }
+        }
+        return lstChuaNhap;
+    }
+    
+    public List<ThongTinSuDung> HienThiDaNhap(BangDanhSach tableBangDanhSach){
+        tableBangDanhSach.removeAll();
+        List<ThongTinSuDung> lstDaNhap = new ArrayList<>();
+        for(ThongTinSuDung thongTinSuDung : lstThongTinSuDungs){
+            if(thongTinSuDung.getID_E_Meter() != null){
+                lstDaNhap.add(thongTinSuDung);
+            }
+        }
+        return lstDaNhap;
+    }
+    
+    public ThongTinSuDung LayThongTinSDQuaCCCD(String CCCD){
+        for(ThongTinSuDung thongTinSuDung : lstThongTinSuDungs){
+            if(thongTinSuDung.getCCCD().equals(CCCD)){
+                return thongTinSuDung;
+            }
+        }
+        return null;
     }
 }

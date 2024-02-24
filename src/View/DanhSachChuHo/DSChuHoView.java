@@ -27,6 +27,7 @@ public class DSChuHoView extends javax.swing.JPanel {
     }
        
     private MainNhanVienView mainNhanVienView = new MainNhanVienView();
+    
     public DSChuHoView(MainNhanVienView mnv) {
         initComponents();
         this.mainNhanVienView = mnv;
@@ -55,13 +56,18 @@ public class DSChuHoView extends javax.swing.JPanel {
     }
 
     public void ShowThongTinTuDBS(){
-        List<ChuHo> dsChuHO = new DSChuHoController().getDsChuHo();
-        DefaultTableModel model = (DefaultTableModel) BangDSChuHo.getModel();
-        int i = 0;
-        for(ChuHo chuHo : dsChuHO){
-            Object[] rowData = {chuHo.getCCCD(),chuHo.getUsername(), chuHo.getDOB(), chuHo.getAddress(), chuHo.getPhone(), chuHo.getAccount(), chuHo.getPassword()};
-            model.insertRow(i++,rowData);   
-        }
+        List<ChuHo> dsChuHo = new DSChuHoController().getDsChuHo();   
+        DefaultTableModel model = (DefaultTableModel) BangDSChuHo.getModel();    
+        model.setRowCount(0);    
+        for(ChuHo chuHo : dsChuHo){
+            Object[] rowData = {
+                chuHo.getCCCD(), chuHo.getUsername(), chuHo.getDOB(), 
+                chuHo.getAddress(), chuHo.getPhone(), chuHo.getAccount(), 
+                chuHo.getPassword()
+            };
+
+            model.addRow(rowData);
+        }   
         model.fireTableDataChanged();
     }
     
