@@ -116,6 +116,9 @@ public class CapNhatAccountCH extends javax.swing.JDialog {
         }else if(!(PassTF.getText().equals(ConfirmPassTF.getText()))){
             JOptionPane.showMessageDialog(this, "Vui lòng nhập thông tin hợp lệ!");
         }
+        else if(!(new CheckTruongDuLieu().KtraTonTaiAccountUsername(AccountTF.getText()))){
+            JOptionPane.showMessageDialog(this, "Tên Account đã tồn tại!");
+        }
         else {  
             int confirm = JOptionPane.showConfirmDialog(
                 this,

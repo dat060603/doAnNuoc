@@ -37,7 +37,7 @@ public class ThemChuHoDialog extends javax.swing.JDialog {
         DiaChiTF = new javax.swing.JTextField();
         CccdTF = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        UsernameTF = new javax.swing.JTextField();
+        AccountTF = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         PassTF = new javax.swing.JPasswordField();
         jLabel6 = new javax.swing.JLabel();
@@ -131,7 +131,7 @@ public class ThemChuHoDialog extends javax.swing.JDialog {
                             .addComponent(jLabel7))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(UsernameTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                            .addComponent(AccountTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
                             .addComponent(PassTF, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(PassConfirmTF))
                         .addGap(35, 35, 35))
@@ -154,7 +154,7 @@ public class ThemChuHoDialog extends javax.swing.JDialog {
                     .addComponent(HoTenTF, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel5)
-                    .addComponent(UsernameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(AccountTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -194,11 +194,14 @@ public class ThemChuHoDialog extends javax.swing.JDialog {
         // Kiểm tra Text field có bị trống không
         if(CccdTF.getText().equals("") || SdtTF.getText().equals("") || HoTenTF.getText().equals("") 
             || DiaChiTF.getText().equals("") || cccdNVTF.getText().equals("")
-            || UsernameTF.getText().equals("") || PassTF.getText().equals("") || PassConfirmTF.getText().equals("")){
+            || AccountTF.getText().equals("") || PassTF.getText().equals("") || PassConfirmTF.getText().equals("")){
             JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin!");
         } 
         else if(!PassTF.getText().equals(PassConfirmTF.getText())){
             JOptionPane.showMessageDialog(this, "Vui lòng xác nhận đúng mật khẩu bạn đã nhập!");
+        }
+        else if(!(new CheckTruongDuLieu().KtraTonTaiAccountUsername(AccountTF.getText()))){
+            JOptionPane.showMessageDialog(this, "Tên Account đã tồn tại!");
         }
         else if(!(CheckTruongDuLieu.KtraCCCD(CccdTF.getText()) && CheckTruongDuLieu.KtraCCCD(cccdNVTF.getText()) && CheckTruongDuLieu.KtraSDT(SdtTF.getText()) && CheckTruongDuLieu.KtraDate(DobDC))){
             JOptionPane.showMessageDialog(this, "Vui lòng xem lại và nhập thông tin hợp lệ!");
@@ -216,7 +219,7 @@ public class ThemChuHoDialog extends javax.swing.JDialog {
             if (confirm == JOptionPane.YES_OPTION) {
                 ChuHo chuHo;
                 chuHo = new ChuHo(CccdTF.getText(), HoTenTF.getText(), DiaChiTF.getText(), SdtTF.getText(), new java.sql.Date(DobDC.getDate().getTime()));
-                new DSChuHoController().ThemChuHo(chuHo, UsernameTF.getText(), PassTF.getText(), cccdNVTF.getText());
+                new DSChuHoController().ThemChuHo(chuHo, AccountTF.getText(), PassTF.getText(), cccdNVTF.getText());
                 JOptionPane.showMessageDialog(this, "Đã thêm tài khoản của chủ hộ có CCCD: " + CccdTF.getText());
             
                 mainNhanVienView.CapNhatBangTrangThai();
@@ -232,6 +235,7 @@ public class ThemChuHoDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_huyBTActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField AccountTF;
     private javax.swing.JTextField CccdTF;
     private javax.swing.JTextField DiaChiTF;
     private com.toedter.calendar.JDateChooser DobDC;
@@ -239,7 +243,6 @@ public class ThemChuHoDialog extends javax.swing.JDialog {
     private javax.swing.JPasswordField PassConfirmTF;
     private javax.swing.JPasswordField PassTF;
     private javax.swing.JTextField SdtTF;
-    private javax.swing.JTextField UsernameTF;
     private javax.swing.JLabel cccdLbl;
     private javax.swing.JTextField cccdNVTF;
     private javax.swing.JButton huyBT;

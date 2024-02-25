@@ -97,4 +97,12 @@ public class CheckTruongDuLieu {
         }
         return true;
     }
+    
+    public boolean KtraTonTaiAccountUsername(String Account_ChuHo){
+        for(ChuHo chuHo : new DSChuHoController().getDsChuHo()){
+            if(chuHo.getAccount().equals(Account_ChuHo))
+                return false;
+        }
+        return true;
+    }
 }

@@ -185,13 +185,21 @@ public class ChuHoDAO {
     public void CapNhatCCCDChuHoDAO(ChuHo chuHo, String CCCD_Moi){
         String SQL = "UPDATE [dbo].[PERSON_INFO]\n" +
                      "SET [CCCD] = ?\n" +
+                     "WHERE [CCCD] = ?\n" +
+                     "\n" +
+                     "UPDATE [dbo].[CHUHO]\n" +
+                     "SET [CCCD] = ?\n" +
                      "WHERE [CCCD] = ?";
+        
         try {
             Connection con = new DBS().getConnection();
             PreparedStatement stmt = con.prepareStatement(SQL);
             
             stmt.setString(1, CCCD_Moi);
             stmt.setString(2, chuHo.getCCCD());
+            
+            stmt.setString(3, CCCD_Moi);
+            stmt.setString(4, chuHo.getCCCD());
 
             int affectedRows = stmt.executeUpdate();
         

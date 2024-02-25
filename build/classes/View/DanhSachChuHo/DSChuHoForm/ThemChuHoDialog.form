@@ -54,7 +54,7 @@
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="UsernameTF" alignment="1" pref="210" max="32767" attributes="0"/>
+                          <Component id="AccountTF" alignment="1" pref="210" max="32767" attributes="0"/>
                           <Component id="PassTF" alignment="1" max="32767" attributes="0"/>
                           <Component id="PassConfirmTF" max="32767" attributes="0"/>
                       </Group>
@@ -84,7 +84,7 @@
                   <Component id="HoTenTF" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="UsernameTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="AccountTF" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -198,7 +198,7 @@
         <Property name="horizontalTextPosition" type="int" value="2"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="UsernameTF">
+    <Component class="javax.swing.JTextField" name="AccountTF">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
