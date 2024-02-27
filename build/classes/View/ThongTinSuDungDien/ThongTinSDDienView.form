@@ -33,21 +33,24 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
+                      <Component id="DaNhapCTDCB" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="ChuaNhapCTDCB" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
                       <Component id="TimKiemTF" min="-2" pref="158" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="TimKiemBT" min="-2" pref="120" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       <Component id="ThemCTDienBT" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="XoaBT" min="-2" pref="120" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Component id="LamMoiBT" min="-2" pref="120" max="-2" attributes="0"/>
+                      <Component id="CapNhatBT" min="-2" pref="120" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="DaNhapCTDCB" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="ChuaNhapCTDCB" min="-2" max="-2" attributes="0"/>
-                  </Group>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="XoaBT" min="-2" pref="120" max="-2" attributes="0"/>
+                  <Component id="LamMoiBT" min="-2" pref="120" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -58,22 +61,29 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="LamMoiBT" min="-2" pref="35" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="TimKiemTF" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                      <Component id="ThemCTDienBT" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="XoaBT" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="CapNhatBT" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="TimKiemBT" pref="0" max="32767" attributes="0"/>
+              </Group>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace type="unrelated" pref="33" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="TimKiemTF" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                          <Component id="ThemCTDienBT" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                          <Component id="XoaBT" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="DaNhapCTDCB" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="ChuaNhapCTDCB" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="TimKiemBT" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="LamMoiBT" min="-2" pref="35" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="47" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="DaNhapCTDCB" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                  <Component id="ChuaNhapCTDCB" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
               <Component id="ScrollPane" min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -95,7 +105,7 @@
                 <Column editable="false" title="T&#xea;n" type="java.lang.String"/>
                 <Column editable="false" title="S&#x110;T" type="java.lang.String"/>
                 <Column editable="false" title="M&#xe3; s&#x1ed1; c&#xf4;ng t&#x1a1; &#x111;i&#x1ec7;n" type="java.lang.String"/>
-                <Column editable="false" title="V&#x1ecb; tr&#xed;" type="java.lang.String"/>
+                <Column editable="false" title="&#x110;&#x1ecb;a ch&#x1ec9;" type="java.lang.String"/>
                 <Column editable="false" title="H&#xec;nh th&#x1ee9;c &#x1edf;" type="java.lang.String"/>
                 <Column editable="false" title="CCCD nh&#xe2;n vi&#xea;n" type="java.lang.String"/>
                 <Column editable="false" title="T&#xea;n nh&#xe2;n vi&#xea;n" type="java.lang.String"/>
@@ -255,6 +265,17 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DaNhapCTDCBActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="LayMotSoUIdepTaiDay.ButtonThuong" name="CapNhatBT">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Icon/6.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="C&#x1ead;p nh&#x1ead;t"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CapNhatBTActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
