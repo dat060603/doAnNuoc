@@ -1,5 +1,6 @@
 package MainRunCode;
 
+import View.Login.Login;
 import View.MainNhanVienView;
 
 public class Main {
@@ -9,8 +10,13 @@ public class Main {
         MF.setLocationRelativeTo(null);
         MF.setVisible(true);
     }
+    
     public static void main(String[] args) {
-        new Main().MainFormLoadding();
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Login().setVisible(true);
+            }
+        });
     }
     
 }
