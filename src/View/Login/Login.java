@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
-
+    private int priviledge;
     public Login() {
         initComponents();
 //        txtUserName.setBackground(new java.awt.Color(0,0,0,1));
@@ -35,7 +35,6 @@ public class Login extends javax.swing.JFrame {
         Password = new javax.swing.JLabel();
         disable = new javax.swing.JLabel();
         show = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
         Login = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
@@ -143,13 +142,6 @@ public class Login extends javax.swing.JFrame {
         });
         jPanel2.add(show, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, 40, 40));
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(199, 226, 255));
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel11.setText("Forget Password?");
-        jLabel11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 370, 121, 27));
-
         Login.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         Login.setForeground(new java.awt.Color(25, 118, 211));
         Login.setText("LOGIN");
@@ -220,10 +212,18 @@ public class Login extends javax.swing.JFrame {
             String passWord =new String(passWordchar);
             boolean isValid=new LoginController().login(userName, passWord);
             if(isValid){
-                this.dispose();
-                 MainNhanVienView mainNhanVienView= new MainNhanVienView();
-                 mainNhanVienView.setVisible(true);
-                 mainNhanVienView.setLocationRelativeTo(null);
+                int privilege=new LoginController().getPrivilege(userName, passWord);
+                if(privilege==0){
+                    this.dispose();
+                    MainNhanVienView mainNhanVienView= new MainNhanVienView();
+                    mainNhanVienView.setVisible(true);
+                    mainNhanVienView.setLocationRelativeTo(null);
+                }else if(privilege==1){
+                    
+                }else if(privilege==2){
+                    
+                }
+                
             }else{
                 JOptionPane.showMessageDialog(this,"Username hoặc Password đã bị sai" ,"Lỗi", JOptionPane.ERROR_MESSAGE);
             }
@@ -238,9 +238,9 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPassWordActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-//        JOptionPane.showInputDialog(null,"Quên mật khẩu", JOptionPane.)
+        new ForgetPassword().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Exit;
@@ -250,7 +250,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel disable;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
