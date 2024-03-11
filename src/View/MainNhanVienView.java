@@ -8,6 +8,7 @@ import Controller.StaffsController.DSStaffsController;
 import LayMotSoUIdepTaiDay.ButtonMenu;
 import View.DanhSachChuHo.DSChuHoView;
 import View.DanhSachChuHo.DSChuHoForm.ThemChuHoDialog;
+import View.ThongTin.ThongTinView;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Image;
@@ -81,7 +82,7 @@ public final class MainNhanVienView extends javax.swing.JFrame {
         DsNhanVienButton = new LayMotSoUIdepTaiDay.ButtonMenu();
         LogoApp = new javax.swing.JLabel();
         HoaDonBT = new LayMotSoUIdepTaiDay.ButtonMenu();
-        button4 = new LayMotSoUIdepTaiDay.ButtonMenu();
+        ThongTinBT = new LayMotSoUIdepTaiDay.ButtonMenu();
         MainPanel = new javax.swing.JPanel();
         TrangThaiChuHo = new LayMotSoUIdepTaiDay.PanelTrangThai();
         TrangThaiNhanVien = new LayMotSoUIdepTaiDay.PanelTrangThai();
@@ -135,12 +136,12 @@ public final class MainNhanVienView extends javax.swing.JFrame {
             }
         });
 
-        button4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/9.png"))); // NOI18N
-        button4.setText("Thông tin ");
-        button4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        button4.addActionListener(new java.awt.event.ActionListener() {
+        ThongTinBT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/9.png"))); // NOI18N
+        ThongTinBT.setText("Thông tin ");
+        ThongTinBT.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        ThongTinBT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button4ActionPerformed(evt);
+                ThongTinBTActionPerformed(evt);
             }
         });
 
@@ -157,7 +158,7 @@ public final class MainNhanVienView extends javax.swing.JFrame {
                     .addComponent(DSChuHo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(DsNhanVienButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(HoaDonBT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(button4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ThongTinBT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ThongTinSDDien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -175,7 +176,7 @@ public final class MainNhanVienView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(HoaDonBT, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(button4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ThongTinBT, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(283, Short.MAX_VALUE))
         );
 
@@ -284,9 +285,15 @@ public final class MainNhanVienView extends javax.swing.JFrame {
             CapNhatBangTrangThai();
     }//GEN-LAST:event_HoaDonBTActionPerformed
 
-    private void button4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_button4ActionPerformed
+    private void ThongTinBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ThongTinBTActionPerformed
+            DSChuHo.Reset();
+            ThongTinSDDien.Reset();
+            DsNhanVienButton.Reset();
+            HoaDonBT.Reset();
+            ThongTinBT.Nhan();
+            this.setForm(new ThongTinView(this));
+            CapNhatBangTrangThai();
+    }//GEN-LAST:event_ThongTinBTActionPerformed
     
      
     public void setForm(JComponent com){
@@ -305,11 +312,11 @@ public final class MainNhanVienView extends javax.swing.JFrame {
     private LayMotSoUIdepTaiDay.PanelBorder MainBorder;
     private javax.swing.JPanel MainPanel;
     private LayMotSoUIdepTaiDay.Menu Menu;
+    private LayMotSoUIdepTaiDay.ButtonMenu ThongTinBT;
     private LayMotSoUIdepTaiDay.ButtonMenu ThongTinSDDien;
     private LayMotSoUIdepTaiDay.PanelTrangThai TrangThaiChuHo;
     private LayMotSoUIdepTaiDay.PanelTrangThai TrangThaiNhanVien;
     private LayMotSoUIdepTaiDay.PanelTrangThai TrangThaiTien;
-    private LayMotSoUIdepTaiDay.ButtonMenu button4;
     private LayMotSoUIdepTaiDay.SimpleTitleBar simpleTitleBar1;
     // End of variables declaration//GEN-END:variables
 
