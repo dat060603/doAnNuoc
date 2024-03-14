@@ -18,7 +18,7 @@ public class LoginDAO {
        
         try {
             cnn = DBS.getConnection();
-            String SQL="SELECT COUNT(A.CCCD) AS Count,Privilege FROM ACCOUNT A WHERE A.Account_Username=? AND A.Account_Password=? ";
+            String SQL="SELECT COUNT(A.CCCD) AS Count FROM ACCOUNT A WHERE A.Account_Username=? AND A.Account_Password=? ";
             preparedStatement = cnn.prepareStatement(SQL);
             preparedStatement.setString(1, userName);
             preparedStatement.setString(2, passWord);

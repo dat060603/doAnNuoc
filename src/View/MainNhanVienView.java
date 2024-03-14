@@ -84,14 +84,17 @@ public final class MainNhanVienView extends javax.swing.JFrame {
         HoaDonBT = new LayMotSoUIdepTaiDay.ButtonMenu();
         ThongTinBT = new LayMotSoUIdepTaiDay.ButtonMenu();
         MainPanel = new javax.swing.JPanel();
-        TrangThaiChuHo = new LayMotSoUIdepTaiDay.PanelTrangThai();
-        TrangThaiNhanVien = new LayMotSoUIdepTaiDay.PanelTrangThai();
-        TrangThaiTien = new LayMotSoUIdepTaiDay.PanelTrangThai();
         simpleTitleBar1 = new LayMotSoUIdepTaiDay.SimpleTitleBar();
+        jLayeredPane1 = new javax.swing.JLayeredPane();
+        TrangThaiChuHo = new LayMotSoUIdepTaiDay.PanelTrangThai();
+        TrangThaiTien = new LayMotSoUIdepTaiDay.PanelTrangThai();
+        TrangThaiNhanVien = new LayMotSoUIdepTaiDay.PanelTrangThai();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("NHÂN VIÊN ");
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1123, 610));
+        setResizable(false);
 
         MainBorder.setBackground(new java.awt.Color(232, 232, 232));
 
@@ -177,27 +180,33 @@ public final class MainNhanVienView extends javax.swing.JFrame {
                 .addComponent(HoaDonBT, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ThongTinBT, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(283, Short.MAX_VALUE))
+                .addContainerGap(276, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout MainPanelLayout = new javax.swing.GroupLayout(MainPanel);
         MainPanel.setLayout(MainPanelLayout);
         MainPanelLayout.setHorizontalGroup(
             MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 841, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         MainPanelLayout.setVerticalGroup(
             MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        TrangThaiNhanVien.setColor1(new java.awt.Color(51, 153, 255));
-        TrangThaiNhanVien.setColor2(new java.awt.Color(0, 153, 255));
+        simpleTitleBar1.setBackground(new java.awt.Color(0, 153, 204));
 
+        jLayeredPane1.setLayout(new java.awt.GridLayout(1, 0, 10, 0));
+        jLayeredPane1.add(TrangThaiChuHo);
+
+        TrangThaiTien.setAutoscrolls(true);
         TrangThaiTien.setColor1(new java.awt.Color(255, 204, 51));
         TrangThaiTien.setColor2(new java.awt.Color(255, 204, 0));
+        jLayeredPane1.add(TrangThaiTien);
 
-        simpleTitleBar1.setBackground(new java.awt.Color(0, 153, 204));
+        TrangThaiNhanVien.setColor1(new java.awt.Color(51, 153, 255));
+        TrangThaiNhanVien.setColor2(new java.awt.Color(0, 153, 255));
+        jLayeredPane1.add(TrangThaiNhanVien);
 
         javax.swing.GroupLayout MainBorderLayout = new javax.swing.GroupLayout(MainBorder);
         MainBorder.setLayout(MainBorderLayout);
@@ -205,16 +214,10 @@ public final class MainNhanVienView extends javax.swing.JFrame {
             MainBorderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MainBorderLayout.createSequentialGroup()
                 .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addGap(10, 10, 10)
                 .addGroup(MainBorderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(MainBorderLayout.createSequentialGroup()
-                        .addComponent(TrangThaiChuHo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(TrangThaiNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(TrangThaiTien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 85, Short.MAX_VALUE))
-                    .addComponent(MainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(MainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLayeredPane1))
                 .addContainerGap())
             .addComponent(simpleTitleBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -225,11 +228,8 @@ public final class MainNhanVienView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(MainBorderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(MainBorderLayout.createSequentialGroup()
-                        .addGroup(MainBorderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TrangThaiChuHo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TrangThaiNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TrangThaiTien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                        .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
                         .addComponent(MainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
                     .addComponent(Menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -317,6 +317,7 @@ public final class MainNhanVienView extends javax.swing.JFrame {
     private LayMotSoUIdepTaiDay.PanelTrangThai TrangThaiChuHo;
     private LayMotSoUIdepTaiDay.PanelTrangThai TrangThaiNhanVien;
     private LayMotSoUIdepTaiDay.PanelTrangThai TrangThaiTien;
+    private javax.swing.JLayeredPane jLayeredPane1;
     private LayMotSoUIdepTaiDay.SimpleTitleBar simpleTitleBar1;
     // End of variables declaration//GEN-END:variables
 
