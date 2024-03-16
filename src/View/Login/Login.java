@@ -2,7 +2,7 @@
 package View.Login;
 
 import Controller.LoginController.LoginController;
-import View.MainNhanVienView;
+import View.Admin.MainAdminView;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -215,7 +215,7 @@ public class Login extends javax.swing.JFrame {
                 int privilege=new LoginController().getPrivilege(userName, passWord);
                 if(privilege==0){
                     this.dispose();
-                    MainNhanVienView mainNhanVienView= new MainNhanVienView();
+                    MainAdminView mainNhanVienView= new MainAdminView();
                     mainNhanVienView.setVisible(true);
                     mainNhanVienView.setLocationRelativeTo(null);
                 }else if(privilege==1){

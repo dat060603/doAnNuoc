@@ -1,14 +1,14 @@
-package View.ThongTinSuDungDien.ThongTinSDDienForm;
+package View.Admin.ThongTinSuDungDien.ThongTinSDDienForm;
 
 import Component.CheckTruongDuLieu;
-import View.MainNhanVienView;
-import View.ThongTinSuDungDien.ThongTinSDDienView;
+import View.Admin.MainAdminView;
+import View.Admin.ThongTinSuDungDien.ThongTinSDDienView;
 import javax.swing.JOptionPane;
 
 public class CapNhatCongToDien extends javax.swing.JDialog {
-    private MainNhanVienView mainNhanVienView;
+    private MainAdminView mainNhanVienView;
     private ThongTinSDDienView thongTinSDDienView;
-    public CapNhatCongToDien(MainNhanVienView mnv, ThongTinSDDienView ttsd , boolean modal) {
+    public CapNhatCongToDien(MainAdminView mnv, ThongTinSDDienView ttsd , boolean modal) {
         this.mainNhanVienView = mnv;
         this.thongTinSDDienView = ttsd;
         this.setResizable(false);

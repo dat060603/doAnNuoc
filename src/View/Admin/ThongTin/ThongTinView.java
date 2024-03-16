@@ -2,9 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package View.ThongTin;
+package View.Admin.ThongTin;
 
-import View.MainNhanVienView;
+import View.Admin.MainAdminView;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,8 +17,8 @@ public class ThongTinView extends javax.swing.JPanel {
      * Creates new form ThongTinView
      */
     
-    private MainNhanVienView mainNhanVienView = new MainNhanVienView();
-    public ThongTinView(MainNhanVienView mnv) {
+    private MainAdminView mainNhanVienView = new MainAdminView();
+    public ThongTinView(MainAdminView mnv) {
         initComponents();
         this.mainNhanVienView = mnv;
         this.setSize(mainNhanVienView.getMainPanel().getSize());
@@ -54,6 +55,11 @@ public class ThongTinView extends javax.swing.JPanel {
         logoutButton.setBackground(new java.awt.Color(204, 204, 204));
         logoutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/logout-8-16.png"))); // NOI18N
         logoutButton.setText("Đăng xuất");
+        logoutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutButtonActionPerformed(evt);
+            }
+        });
         add(logoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 320, -1, -1));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -112,6 +118,10 @@ public class ThongTinView extends javax.swing.JPanel {
     private void cccdfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cccdfieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cccdfieldActionPerformed
+
+    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
+        JOptionPane.showConfirmDialog(null, "Bạn có muốn đăng xuất ?", "Đăng Xuất", JOptionPane.OK_CANCEL_OPTION);
+    }//GEN-LAST:event_logoutButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

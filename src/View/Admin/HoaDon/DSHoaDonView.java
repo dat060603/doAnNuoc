@@ -1,12 +1,13 @@
-package View;
+package View.Admin.HoaDon;
 
 
+import View.Admin.MainAdminView;
 import javax.swing.table.DefaultTableModel;
 public class DSHoaDonView extends javax.swing.JPanel {
 
     public DSHoaDonView() {
         initComponents();
-        this.setSize(new MainNhanVienView().getMainPanel().getSize());
+        this.setSize(new MainAdminView().getMainPanel().getSize());
         
         DefaultTableModel model = (DefaultTableModel) BangDSChuHo.getModel();
         

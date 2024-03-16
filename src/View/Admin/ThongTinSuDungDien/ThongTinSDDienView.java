@@ -1,12 +1,12 @@
-package View.ThongTinSuDungDien;
+package View.Admin.ThongTinSuDungDien;
 
 import Controller.ChuHoController.DSChuHoController;
 import Controller.ThongTinSDController.DSThongTinSDController;
 import Model.ChuHo;
 import Model.ThongTinSuDung;
-import View.MainNhanVienView;
-import View.ThongTinSuDungDien.ThongTinSDDienForm.CapNhatCongToDien;
-import View.ThongTinSuDungDien.ThongTinSDDienForm.ThemCongToDien;
+import View.Admin.MainAdminView;
+import View.Admin.ThongTinSuDungDien.ThongTinSDDienForm.CapNhatCongToDien;
+import View.Admin.ThongTinSuDungDien.ThongTinSDDienForm.ThemCongToDien;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
@@ -24,13 +24,13 @@ public class ThongTinSDDienView extends javax.swing.JPanel {
         this.thongTinSuDung = thongTinSuDung;
     }
     
-    private MainNhanVienView mainNhanVienView;
+    private MainAdminView mainNhanVienView;
     
-    public ThongTinSDDienView(MainNhanVienView mnv) {
+    public ThongTinSDDienView(MainAdminView mnv) {
         initComponents();
         BangDSThongTinSD.clearSelection();
         this.mainNhanVienView = mnv;
-        this.setSize(new MainNhanVienView().getMainPanel().getSize());
+        this.setSize(new MainAdminView().getMainPanel().getSize());
         this.setSize(mainNhanVienView.getMainPanel().getSize());
         this.setVisible(true);
         ChuaNhapCTDCB.resetKeyboardActions();

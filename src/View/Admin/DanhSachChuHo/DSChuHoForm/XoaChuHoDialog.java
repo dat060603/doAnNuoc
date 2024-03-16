@@ -1,15 +1,15 @@
-package View.DanhSachChuHo.DSChuHoForm;
+package View.Admin.DanhSachChuHo.DSChuHoForm;
 
 import Component.CheckTruongDuLieu;
 import Controller.ChuHoController.DSChuHoController;
-import View.DanhSachChuHo.DSChuHoView;
-import View.MainNhanVienView;
+import View.Admin.DanhSachChuHo.DSChuHoView;
+import View.Admin.MainAdminView;
 import javax.swing.JOptionPane;
 
 public class XoaChuHoDialog extends javax.swing.JDialog {
-    private MainNhanVienView mainNhanVienView;
+    private MainAdminView mainNhanVienView;
     private DSChuHoView dSChuHoView;
-    public XoaChuHoDialog(MainNhanVienView Frame, DSChuHoView FrameChuHoView, boolean modal) {
+    public XoaChuHoDialog(MainAdminView Frame, DSChuHoView FrameChuHoView, boolean modal) {
         initComponents();
         this.mainNhanVienView = Frame;
         this.dSChuHoView = FrameChuHoView;

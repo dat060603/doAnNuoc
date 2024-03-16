@@ -1,14 +1,14 @@
-package View.DanhSachChuHo;
+package View.Admin.DanhSachChuHo;
 
 import Controller.ChuHoController.DSChuHoController;
 import LayMotSoUIdepTaiDay.BangDanhSach;
 import Model.ChuHo;
-import View.MainNhanVienView;
-import View.DanhSachChuHo.DSChuHoForm.CapNhatAccountCH;
-import View.DanhSachChuHo.DSChuHoForm.CapNhatCCCDCH;
-import View.DanhSachChuHo.DSChuHoForm.CapNhatThongTinCH;
-import View.DanhSachChuHo.DSChuHoForm.ThemChuHoDialog;
-import View.DanhSachChuHo.DSChuHoForm.XoaChuHoDialog;
+import View.Admin.MainAdminView;
+import View.Admin.DanhSachChuHo.DSChuHoForm.CapNhatAccountCH;
+import View.Admin.DanhSachChuHo.DSChuHoForm.CapNhatCCCDCH;
+import View.Admin.DanhSachChuHo.DSChuHoForm.CapNhatThongTinCH;
+import View.Admin.DanhSachChuHo.DSChuHoForm.ThemChuHoDialog;
+import View.Admin.DanhSachChuHo.DSChuHoForm.XoaChuHoDialog;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -26,9 +26,9 @@ public class DSChuHoView extends javax.swing.JPanel {
         this.chuHo = chuHo;
     }
        
-    private MainNhanVienView mainNhanVienView = new MainNhanVienView();
+    private MainAdminView mainNhanVienView = new MainAdminView();
     
-    public DSChuHoView(MainNhanVienView mnv) {
+    public DSChuHoView(MainAdminView mnv) {
         initComponents();
         this.mainNhanVienView = mnv;
         this.setSize(mainNhanVienView.getMainPanel().getSize());

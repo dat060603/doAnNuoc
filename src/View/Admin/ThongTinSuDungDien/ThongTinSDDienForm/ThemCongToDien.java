@@ -1,16 +1,16 @@
-package View.ThongTinSuDungDien.ThongTinSDDienForm;
+package View.Admin.ThongTinSuDungDien.ThongTinSDDienForm;
 
 import Component.CheckTruongDuLieu;
 import Controller.ThongTinSDController.DSThongTinSDController;
-import View.MainNhanVienView;
-import View.ThongTinSuDungDien.ThongTinSDDienView;
+import View.Admin.MainAdminView;
+import View.Admin.ThongTinSuDungDien.ThongTinSDDienView;
 import javax.swing.JOptionPane;
 
 public class ThemCongToDien extends javax.swing.JDialog {
-    private MainNhanVienView mainNhanVienView;
+    private MainAdminView mainNhanVienView;
     private ThongTinSDDienView thongTinSDDienView;
     
-    public ThemCongToDien(MainNhanVienView mnv, ThongTinSDDienView ttsd,boolean modal) {
+    public ThemCongToDien(MainAdminView mnv, ThongTinSDDienView ttsd,boolean modal) {
         this.mainNhanVienView = mnv;
         this.thongTinSDDienView = ttsd;
         initComponents();       

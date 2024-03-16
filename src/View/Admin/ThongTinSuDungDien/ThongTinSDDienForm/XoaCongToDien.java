@@ -1,4 +1,4 @@
-package View.ThongTinSuDungDien.ThongTinSDDienForm;
+package View.Admin.ThongTinSuDungDien.ThongTinSDDienForm;
 
 public class XoaCongToDien extends javax.swing.JDialog {
 

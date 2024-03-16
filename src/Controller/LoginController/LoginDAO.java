@@ -18,7 +18,7 @@ public class LoginDAO {
        
         try {
             cnn = DBS.getConnection();
-            String SQL="SELECT COUNT(A.CCCD) AS Count FROM ACCOUNT A WHERE A.Account_Username=? AND A.Account_Password=? ";
+            String SQL="SELECT COUNT(A.CCCD) AS Count FROM ACCOUNTS A WHERE A.Account_Username=? AND A.Account_Password=? ";
             preparedStatement = cnn.prepareStatement(SQL);
             preparedStatement.setString(1, userName);
             preparedStatement.setString(2, passWord);
@@ -41,7 +41,7 @@ public class LoginDAO {
         int privilege=0;
         try{
             cnn = DBS.getConnection();
-            String SQL="SELECT COUNT(A.CCCD) AS Count,Privilege FROM ACCOUNT A WHERE A.Account_Username=? AND A.Account_Password=? ";
+            String SQL="SELECT COUNT(A.CCCD) AS Count,Privilege FROM ACCOUNTS A WHERE A.Account_Username=? AND A.Account_Password=? ";
             preparedStatement = cnn.prepareStatement(SQL);
             preparedStatement.setString(1, userName);
             preparedStatement.setString(2, passWord);
@@ -61,7 +61,7 @@ public class LoginDAO {
         ResultSet resultSet = null;
         try{
             cnn=DBS.getConnection();
-            String SQL="UPDATE ACCOUNT\n" +
+            String SQL="UPDATE ACCOUNTS\n" +
                         "SET Account_Password =?\n" +
                         "WHERE CCCD = ? AND Account_Username = ?";
             preparedStatement=cnn.prepareStatement(SQL);
@@ -82,7 +82,7 @@ public class LoginDAO {
         String tmp="";
         try{
             cnn=DBS.getConnection();
-            String SQL="SELECT Account_Username FROM ACCOUNT WHERE CCCD=?";
+            String SQL="SELECT Account_Username FROM ACCOUNTS WHERE CCCD=?";
             preparedStatement=cnn.prepareStatement(SQL);
             preparedStatement.setString(1,cccd);
             ResultSet re=preparedStatement.executeQuery();

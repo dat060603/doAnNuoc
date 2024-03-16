@@ -1,17 +1,17 @@
-package View.DanhSachChuHo.DSChuHoForm;
+package View.Admin.DanhSachChuHo.DSChuHoForm;
 
 import Component.CheckTruongDuLieu;
 import Controller.ChuHoController.DSChuHoController;
 import Controller.PersonalInFoController.DSPersonalInfoController;
 import Model.ChuHo;
-import View.DanhSachChuHo.DSChuHoView;
-import View.MainNhanVienView;
+import View.Admin.DanhSachChuHo.DSChuHoView;
+import View.Admin.MainAdminView;
 import javax.swing.JOptionPane;
 
 public class ThemChuHoDialog extends javax.swing.JDialog {
-    private MainNhanVienView mainNhanVienView;
+    private MainAdminView mainNhanVienView;
     
-    public ThemChuHoDialog(MainNhanVienView Frame,boolean modal) {
+    public ThemChuHoDialog(MainAdminView Frame,boolean modal) {
         this.mainNhanVienView = Frame;
         initComponents();
         this.setResizable(false);
