@@ -1,10 +1,10 @@
 package MainRunCode;
 
 import View.Login.Login;
-import View.MainNhanVienView;
+import View.Admin.MainAdminView;
 
 public class Main {
-    private MainNhanVienView MF = new MainNhanVienView();
+    private MainAdminView MF = new MainAdminView();
     public void MainFormLoadding() {
         MF.setTitle("Demo");
         MF.setLocationRelativeTo(null);
