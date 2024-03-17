@@ -10,6 +10,7 @@ import LayMotSoUIdepTaiDay.ButtonMenu;
 import View.Admin.DanhSachChuHo.DSChuHoView;
 import View.Admin.DanhSachChuHo.DSChuHoForm.ThemChuHoDialog;
 import View.Admin.DanhSachPhanCong.DSPhanCong;
+import View.Admin.QLPQTaiKhoan.QLPQTaiKhoan;
 import View.Admin.ThongTin.ThongTinView;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -314,10 +315,11 @@ public final class MainAdminView extends javax.swing.JFrame {
 
     private void PhanQuyenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PhanQuyenButtonActionPerformed
             DSChuHoButton.Reset();
-            PhanQuyenButton.Nhan();
+            PhanQuyenButton.Reset();
             DsNhanVienButton.Reset();
             HoaDonDienButton.Reset();
-            this.setForm(new ThongTinSDDienView(this));
+            ThongTinButton.Nhan();
+            this.setForm(new QLPQTaiKhoan(this));
             CapNhatBangTrangThai();
     }//GEN-LAST:event_PhanQuyenButtonActionPerformed
 
