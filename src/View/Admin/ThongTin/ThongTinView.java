@@ -5,7 +5,12 @@
 package View.Admin.ThongTin;
 
 import View.Admin.MainAdminView;
+import java.awt.Window;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -16,13 +21,14 @@ public class ThongTinView extends javax.swing.JPanel {
     /**
      * Creates new form ThongTinView
      */
+    private MainAdminView mainAdminView = new MainAdminView();
     
-    private MainAdminView mainNhanVienView = new MainAdminView();
     public ThongTinView(MainAdminView mnv) {
         initComponents();
-        this.mainNhanVienView = mnv;
-        this.setSize(mainNhanVienView.getMainPanel().getSize());
+        this.mainAdminView = mnv;
+        this.setSize(mainAdminView.getMainPanel().getSize());
         this.setVisible(true);
+       
     }
 
     /**
@@ -120,7 +126,7 @@ public class ThongTinView extends javax.swing.JPanel {
     }//GEN-LAST:event_cccdfieldActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
-        JOptionPane.showConfirmDialog(null, "Bạn có muốn đăng xuất ?", "Đăng Xuất", JOptionPane.OK_CANCEL_OPTION);
+       
     }//GEN-LAST:event_logoutButtonActionPerformed
 
 

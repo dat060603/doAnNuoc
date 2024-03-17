@@ -18,14 +18,13 @@ public class LoginDAO {
        
         try {
             cnn = DBS.getConnection();
-            String SQL="SELECT COUNT(A.CCCD) AS Count FROM ACCOUNTS A WHERE A.Account_Username=? AND A.Account_Password=? ";
+            String SQL="SELECT '1' AS Exist FROM ACCOUNTS WHERE Account_Username=? AND Account_Password=? AND Status='0' ";
             preparedStatement = cnn.prepareStatement(SQL);
             preparedStatement.setString(1, userName);
             preparedStatement.setString(2, passWord);
             resultSet = preparedStatement.executeQuery();
             while(resultSet.next()) {
-                int count = resultSet.getInt("Count");
-                isValid = count > 0; 
+                isValid = resultSet.getBoolean("Exist");
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -41,7 +40,7 @@ public class LoginDAO {
         int privilege=0;
         try{
             cnn = DBS.getConnection();
-            String SQL="SELECT COUNT(A.CCCD) AS Count,Privilege FROM ACCOUNTS A WHERE A.Account_Username=? AND A.Account_Password=? ";
+            String SQL="SELECT Privilege FROM ACCOUNTS A WHERE A.Account_Username=? AND A.Account_Password=? AND Status='0' ";
             preparedStatement = cnn.prepareStatement(SQL);
             preparedStatement.setString(1, userName);
             preparedStatement.setString(2, passWord);
@@ -82,7 +81,7 @@ public class LoginDAO {
         String tmp="";
         try{
             cnn=DBS.getConnection();
-            String SQL="SELECT Account_Username FROM ACCOUNTS WHERE CCCD=?";
+            String SQL="SELECT Account_Username FROM ACCOUNTS WHERE CCCD=? AND Status ='0' ";
             preparedStatement=cnn.prepareStatement(SQL);
             preparedStatement.setString(1,cccd);
             ResultSet re=preparedStatement.executeQuery();

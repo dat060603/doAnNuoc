@@ -128,7 +128,7 @@ public class DSChuHoView extends javax.swing.JPanel {
         ScrollPane.setViewportView(BangDSChuHo);
 
         ThemBT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Isert_icon.png"))); // NOI18N
-        ThemBT.setText("Thêm\n");
+        ThemBT.setText("Thêm ");
         ThemBT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ThemBTActionPerformed(evt);
@@ -159,7 +159,6 @@ public class DSChuHoView extends javax.swing.JPanel {
             }
         });
 
-        CapNhatCombobox.setForeground(new java.awt.Color(0, 0, 0));
         CapNhatCombobox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cập nhật thông tin", "Cập nhật Account", "Cập nhật CCCD" }));
         CapNhatCombobox.setSelectedItem(null
         );

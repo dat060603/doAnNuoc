@@ -9,6 +9,7 @@ import Controller.StaffsController.DSStaffsController;
 import LayMotSoUIdepTaiDay.ButtonMenu;
 import View.Admin.DanhSachChuHo.DSChuHoView;
 import View.Admin.DanhSachChuHo.DSChuHoForm.ThemChuHoDialog;
+import View.Admin.DanhSachPhanCong.DSPhanCong;
 import View.Admin.ThongTin.ThongTinView;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -348,7 +349,13 @@ public final class MainAdminView extends javax.swing.JFrame {
     }//GEN-LAST:event_ThongTinButtonActionPerformed
 
     private void PhanCongButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PhanCongButtonActionPerformed
-        // TODO add your handling code here:
+            DSChuHoButton.Reset();
+            PhanQuyenButton.Reset();
+            DsNhanVienButton.Reset();
+            HoaDonDienButton.Reset();
+            ThongTinButton.Nhan();
+            this.setForm(new DSPhanCong(this));
+            CapNhatBangTrangThai();
     }//GEN-LAST:event_PhanCongButtonActionPerformed
 
     private void ThongTinChungButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ThongTinChungButtonActionPerformed
