@@ -11,6 +11,7 @@ import View.Admin.DanhSachChuHo.DSChuHoView;
 import View.Admin.DanhSachChuHo.DSChuHoForm.ThemChuHoDialog;
 import View.Admin.DanhSachPhanCong.DSPhanCong;
 import View.Admin.QLPQTaiKhoan.QLPQTaiKhoan;
+import View.Admin.QLThongTinChung.QuanLyThongTinChung;
 import View.Admin.ThongTin.ThongTinView;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -42,11 +43,16 @@ public final class MainAdminView extends javax.swing.JFrame {
     public MainAdminView(){
         initComponents();
         setBackground(new Color(0, 0, 0, 0));
+         
+        
+        // Set exit on close
+      
         simpleTitleBar1.init(this);
         
         TrangThaiChuHo.setLabel("Số chủ hộ: ");
         TrangThaiNhanVien.setLabel("Số nhân viên: ");       
         TrangThaiTien.setLabel("Tổng doanh thu: ");
+        
         try {
             CapNhatBangTrangThai();
         } catch (Exception ex) {
@@ -271,7 +277,7 @@ public final class MainAdminView extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addGroup(MainBorderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(MainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLayeredPane1))
+                    .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 851, Short.MAX_VALUE))
                 .addContainerGap())
             .addComponent(simpleTitleBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -361,7 +367,13 @@ public final class MainAdminView extends javax.swing.JFrame {
     }//GEN-LAST:event_PhanCongButtonActionPerformed
 
     private void ThongTinChungButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ThongTinChungButtonActionPerformed
-        // TODO add your handling code here:
+            DSChuHoButton.Reset();
+            PhanQuyenButton.Reset();
+            DsNhanVienButton.Reset();
+            HoaDonDienButton.Reset();
+            ThongTinButton.Nhan();
+             this.setForm(new QuanLyThongTinChung(this));
+            CapNhatBangTrangThai();
     }//GEN-LAST:event_ThongTinChungButtonActionPerformed
 
     private void TrangChuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TrangChuButtonActionPerformed
